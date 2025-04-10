@@ -26,6 +26,28 @@
     --ring: 240 4.9% 83.9%;
     --radius: 0.75rem;
   }
+  
+  .light-mode {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+  }
 }
 
 @layer base {
@@ -41,6 +63,10 @@
     @apply bg-dark text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
+  
+  .light-mode body {
+    @apply bg-white text-foreground;
+  }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
@@ -55,6 +81,10 @@
   ::-webkit-scrollbar-track {
     @apply bg-dark-accent;
   }
+  
+  .light-mode ::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
 
   ::-webkit-scrollbar-thumb {
     @apply bg-violet rounded-full transition-all;
@@ -63,6 +93,11 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-electric;
   }
+  
+  /* Theme transitions */
+  body {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
 }
 
 @layer utilities {
@@ -70,8 +105,16 @@
     @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_4px_12px_rgba(0,0,0,0.5)];
   }
   
+  .light-mode .glass {
+    @apply backdrop-blur-xl bg-black/5 border border-black/10 shadow-[0_4px_12px_rgba(0,0,0,0.1)];
+  }
+  
   .neo-blur {
     @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+  }
+  
+  .light-mode .neo-blur {
+    @apply backdrop-blur-2xl bg-white/40 border border-black/10;
   }
   
   .text-gradient {
@@ -80,6 +123,10 @@
 
   .glass-card {
     @apply glass rounded-2xl transition-all duration-300 hover:shadow-[0_8px_20px_rgba(30,174,219,0.3)];
+  }
+  
+  .light-mode .glass-card {
+    @apply hover:shadow-[0_8px_20px_rgba(30,174,219,0.2)];
   }
 
   .animate-on-scroll {
@@ -114,5 +161,35 @@
     pointer-events: none;
     z-index: 9998;
     transition: transform 0.3s ease;
+  }
+  
+  /* Light mode specific styles */
+  .light-mode {
+    --dark: #ffffff;
+    --dark-accent: #f3f3f3;
+  }
+  
+  .light-mode .bg-dark {
+    @apply bg-white;
+  }
+  
+  .light-mode .bg-dark-accent {
+    @apply bg-gray-100;
+  }
+  
+  .light-mode .text-white {
+    @apply text-gray-800;
+  }
+  
+  .light-mode .text-white\/80 {
+    @apply text-gray-700;
+  }
+  
+  .light-mode .text-white\/60 {
+    @apply text-gray-600;
+  }
+  
+  .light-mode .border-white\/10 {
+    @apply border-gray-200;
   }
 }

@@ -1,10 +1,28 @@
 
-import React, { useEffect, useRef } from 'react';
-import { ArrowDown, Rocket, Github, Linkedin, FileText } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowDown, Rocket, Github, Linkedin, FileText, Sun, Moon } from 'lucide-react';
 import { Button } from './ui/button';
+import { Switch } from './ui/switch';
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  useEffect(() => {
+    // Load user's theme preference from localStorage if available
+    const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.documentElement.classList.toggle('light-mode', savedTheme === 'light');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('light-mode', newTheme === 'light');
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,6 +53,19 @@ const HeroSection: React.FC = () => {
       ref={sectionRef} 
       className="min-h-screen flex flex-col items-center justify-center relative pt-20 pb-10 px-4"
     >
+      {/* Theme toggle button */}
+      <div className="absolute top-24 right-6 z-20">
+        <div className="glass-card px-3 py-2 rounded-full flex items-center gap-2">
+          <Sun size={18} className={`transition-opacity ${theme === 'light' ? 'text-yellow-400' : 'text-white/60'}`} />
+          <Switch 
+            checked={theme === 'light'}
+            onCheckedChange={toggleTheme}
+            className="data-[state=checked]:bg-yellow-400 data-[state=unchecked]:bg-violet"
+          />
+          <Moon size={18} className={`transition-opacity ${theme === 'dark' ? 'text-violet' : 'text-white/60'}`} />
+        </div>
+      </div>
+
       <div className="w-full max-w-6xl mx-auto z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="text-center md:text-left order-2 md:order-1">
           <h4 className="text-electric font-mono mb-4 animate-on-load opacity-0 translate-y-10 transition-all duration-700 delay-100">
