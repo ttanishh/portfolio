@@ -45,7 +45,7 @@ const Header: React.FC = () => {
             <a
               key={item.name}
               href={item.href}
-              className="relative text-white/80 font-medium transition-colors hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-electric after:transition-all hover:after:w-full light-mode:text-gray-700 light-mode:hover:text-gray-900"
+              className="relative text-white/80 font-medium transition-colors hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-electric after:transition-all hover:after:w-full"
             >
               {item.name}
             </a>
@@ -55,7 +55,7 @@ const Header: React.FC = () => {
         {/* Mobile Navigation Toggle */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 text-white/80 hover:text-white light-mode:text-gray-700 light-mode:hover:text-gray-900"
+          className="md:hidden p-2 text-white/80 hover:text-white"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -64,12 +64,12 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="md:hidden glass backdrop-blur-xl absolute top-full left-0 right-0 flex flex-col space-y-4 p-6 border-t border-white/10 animate-slide-down light-mode:border-gray-200">
+        <div className="md:hidden glass backdrop-blur-xl absolute top-full left-0 right-0 flex flex-col space-y-4 p-6 border-t border-white/10 animate-slide-down">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-white/80 hover:text-white py-2 light-mode:text-gray-700 light-mode:hover:text-gray-900"
+              className="text-white/80 hover:text-white py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               {item.name}
