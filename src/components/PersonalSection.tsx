@@ -1,6 +1,5 @@
-
 import React, { useState, useRef, useEffect } from 'react';
-import { Book, PenLine, Cricket, Basketball, Music } from 'lucide-react';
+import { Book, PenLine, Activity, Dumbbell, Music } from 'lucide-react';
 
 interface TabContent {
   id: string;
@@ -125,12 +124,12 @@ const PersonalSection: React.FC = () => {
     {
       id: 'play',
       label: 'Play',
-      icon: <Cricket size={20} />,
+      icon: <Activity size={20} />,
       content: (
         <div className="space-y-8">
           <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '200ms' }}>
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <Cricket size={24} className="text-electric" />
+              <Activity size={24} className="text-electric" />
               Cricket
             </h3>
             <div className="glass-card p-6">
@@ -148,7 +147,7 @@ const PersonalSection: React.FC = () => {
           
           <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '300ms' }}>
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-              <Basketball size={24} className="text-violet" />
+              <Dumbbell size={24} className="text-violet" />
               Basketball
             </h3>
             <div className="glass-card p-6">
