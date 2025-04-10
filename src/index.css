@@ -68,6 +68,10 @@
     @apply bg-white text-foreground;
   }
 
+  .light-mode ::selection {
+    @apply bg-electric/30 text-dark;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
   }
@@ -163,7 +167,7 @@
     transition: transform 0.3s ease;
   }
   
-  /* Light mode specific styles */
+  /* Light mode specific styles for better text visibility */
   .light-mode {
     --dark: #ffffff;
     --dark-accent: #f3f3f3;
@@ -191,5 +195,22 @@
   
   .light-mode .border-white\/10 {
     @apply border-gray-200;
+  }
+
+  /* Improved text visibility for light mode */
+  .light-mode .text-electric {
+    @apply text-electric;
+  }
+
+  .light-mode .text-violet {
+    @apply text-violet;
+  }
+
+  .light-mode .text-mint {
+    @apply text-mint;
+  }
+
+  .light-mode .text-gradient {
+    @apply bg-gradient-to-r from-electric via-violet to-mint bg-clip-text text-transparent;
   }
 }
