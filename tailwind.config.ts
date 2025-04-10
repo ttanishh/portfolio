@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for portfolio
+				electric: "#1EAEDB",
+				violet: "#7E69AB",
+				mint: "#A0E7E5",
+				dark: "#121212",
+				"dark-accent": "#1A1A1A",
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +91,84 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				},
+				'pulse-glow': {
+					'0%, 100%': { 
+						opacity: '1',
+						boxShadow: '0 0 20px 2px rgba(30, 174, 219, 0.3)'
+					},
+					'50%': { 
+						opacity: '0.7',
+						boxShadow: '0 0 30px 4px rgba(30, 174, 219, 0.5)'
+					},
+				},
+				'gradient-shift': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' },
+				},
+				'slide-up': {
+					'0%': { 
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': { 
+						opacity: '1',
+						transform: 'translateY(0)'
+					},
+				},
+				'slide-down': {
+					'0%': { 
+						opacity: '0',
+						transform: 'translateY(-20px)'
+					},
+					'100%': { 
+						opacity: '1',
+						transform: 'translateY(0)'
+					},
+				},
+				'slide-left': {
+					'0%': { 
+						opacity: '0',
+						transform: 'translateX(20px)'
+					},
+					'100%': { 
+						opacity: '1',
+						transform: 'translateX(0)'
+					},
+				},
+				'slide-right': {
+					'0%': { 
+						opacity: '0',
+						transform: 'translateX(-20px)'
+					},
+					'100%': { 
+						opacity: '1',
+						transform: 'translateX(0)'
+					},
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+				'gradient-shift': 'gradient-shift 6s ease infinite',
+				'slide-up': 'slide-up 0.6s ease-out',
+				'slide-down': 'slide-down 0.6s ease-out',
+				'slide-left': 'slide-left 0.6s ease-out',
+				'slide-right': 'slide-right 0.6s ease-out',
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-cosmic': 'linear-gradient(to right, #1a1a1a, #2d3748, #1a1a1a)',
+				'gradient-glass': 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0))',
+				'gradient-glow': 'linear-gradient(90deg, #1EAEDB, #7E69AB, #1EAEDB)',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
