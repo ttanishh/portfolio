@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
-import { ArrowDown, Rocket } from 'lucide-react';
+import { ArrowDown, Rocket, Github, Linkedin, FileText } from 'lucide-react';
+import { Button } from './ui/button';
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -45,43 +46,79 @@ const HeroSection: React.FC = () => {
             <br className="hidden md:block" /> Engineering <span className="text-electric">Smart</span>, <span className="text-violet">Secure</span>, and <span className="text-mint">Scalable</span> Ideas
           </h1>
           
-          <p className="text-lg text-white/80 max-w-xl md:ml-1 mb-10 animate-on-load opacity-0 translate-y-10 transition-all duration-700 delay-300">
+          <p className="text-lg text-white/80 max-w-xl md:ml-1 mb-8 animate-on-load opacity-0 translate-y-10 transition-all duration-700 delay-300">
             3rd-year B.Tech Computer Science student building professional-grade projects across full-stack, AI, and blockchain technologies.
           </p>
           
+          {/* Social links */}
+          <div className="flex items-center justify-center md:justify-start gap-4 mb-8 animate-on-load opacity-0 translate-y-10 transition-all duration-700 delay-350">
+            <a 
+              href="https://github.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="glass-card h-10 w-10 rounded-full flex items-center justify-center transition-all duration-300 hover:text-electric hover:scale-110"
+              aria-label="GitHub Profile"
+            >
+              <Github size={20} />
+            </a>
+            <a 
+              href="https://linkedin.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="glass-card h-10 w-10 rounded-full flex items-center justify-center transition-all duration-300 hover:text-electric hover:scale-110"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a 
+              href="#" 
+              className="glass-card h-10 w-10 rounded-full flex items-center justify-center transition-all duration-300 hover:text-electric hover:scale-110"
+              aria-label="Resume"
+            >
+              <FileText size={20} />
+            </a>
+          </div>
+          
+          {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 animate-on-load opacity-0 translate-y-10 transition-all duration-700 delay-400">
-            <a 
-              href="#projects" 
-              className="glass-card group flex items-center gap-2 px-6 py-3 text-white font-medium"
+            <Button 
+              asChild
+              variant="outline" 
+              className="glass-card group flex items-center gap-2 px-6 py-6 text-white font-medium hover:border-electric"
             >
-              <span>Explore My Work</span>
-              <ArrowDown size={18} className="transition-transform group-hover:translate-y-1" />
-            </a>
+              <a href="#projects">
+                <span>Explore My Work</span>
+                <ArrowDown size={18} className="transition-transform group-hover:translate-y-1" />
+              </a>
+            </Button>
             
-            <a 
-              href="#contact" 
-              className="glass-card bg-gradient-glow animate-gradient-shift group flex items-center gap-2 px-6 py-3 text-white font-medium"
+            <Button 
+              asChild
+              variant="default"
+              className="glass-card bg-gradient-glow animate-gradient-shift group flex items-center gap-2 px-6 py-6 text-white font-medium"
             >
-              <span>Let's Collaborate</span>
-              <Rocket size={18} className="transition-transform group-hover:translate-x-1" />
-            </a>
+              <a href="#contact">
+                <span>Let's Collaborate</span>
+                <Rocket size={18} className="transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
           </div>
         </div>
         
         <div className="flex justify-center md:justify-end order-1 md:order-2 animate-on-load opacity-0 translate-y-10 transition-all duration-700 delay-300">
-          <div className="relative w-64 h-64 sm:w-80 sm:h-80">
+          <div className="relative w-72 h-72 sm:w-80 sm:h-80">
             <div className="absolute inset-0 bg-gradient-to-br from-electric/40 via-violet/30 to-mint/20 rounded-full blur-xl"></div>
-            <div className="absolute inset-0 glass-card rounded-full overflow-hidden">
+            <div className="absolute inset-0 glass-card rounded-full overflow-hidden border-2 border-white/10 hover:border-electric/30 transition-all duration-500 shadow-lg hover:shadow-electric/20">
               <img 
                 src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400&auto=format" 
                 alt="Tanish" 
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -top-6 -right-6 w-24 h-24 glass-card rounded-full flex items-center justify-center bg-dark/60">
+            <div className="absolute -top-6 -right-6 w-24 h-24 glass-card rounded-full flex items-center justify-center bg-dark/60 border border-white/10 hover:border-electric/30 transition-all duration-300 shadow-lg">
               <span className="text-mint font-mono text-sm">3+ Years</span>
             </div>
-            <div className="absolute -bottom-4 -left-4 w-20 h-20 glass-card rounded-full flex items-center justify-center bg-dark/60">
+            <div className="absolute -bottom-4 -left-4 w-20 h-20 glass-card rounded-full flex items-center justify-center bg-dark/60 border border-white/10 hover:border-electric/30 transition-all duration-300 shadow-lg">
               <span className="text-electric font-mono text-sm">10+ Projects</span>
             </div>
           </div>
@@ -93,8 +130,9 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Background decorative elements */}
-      <div className="absolute top-1/3 right-10 w-64 h-64 bg-electric/20 rounded-full filter blur-[100px] z-0"></div>
-      <div className="absolute bottom-1/3 left-10 w-48 h-48 bg-violet/20 rounded-full filter blur-[80px] z-0"></div>
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-electric/10 rounded-full filter blur-[120px] z-0"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-violet/10 rounded-full filter blur-[100px] z-0"></div>
+      <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-mint/10 rounded-full filter blur-[80px] z-0"></div>
     </section>
   );
 };
