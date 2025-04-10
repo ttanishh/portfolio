@@ -7,6 +7,7 @@ import ProjectsShowcase from '../components/ProjectsShowcase';
 import ExperienceTimeline from '../components/ExperienceTimeline';
 import TechStack from '../components/TechStack';
 import PersonalSection from '../components/PersonalSection';
+import AchievementsSection from '../components/AchievementsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 
@@ -151,6 +152,7 @@ const Index: React.FC = () => {
       <main>
         <HeroSection />
         <ProjectsShowcase />
+        <AchievementsSection />
         <ExperienceTimeline />
         <TechStack />
         <PersonalSection />
