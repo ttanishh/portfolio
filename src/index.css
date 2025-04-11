@@ -197,17 +197,18 @@
     @apply border-gray-200;
   }
 
-  /* Improved text visibility for light mode */
+  /* Improved text visibility for light mode - Fixed circular dependency */
+  /* Instead of applying the utility class to itself, use the direct color */
   .light-mode .text-electric {
-    @apply text-electric;
+    color: #1EAEDB;
   }
 
   .light-mode .text-violet {
-    @apply text-violet;
+    color: #7E69AB;
   }
 
   .light-mode .text-mint {
-    @apply text-mint;
+    color: #A0E7E5;
   }
 
   .light-mode .text-gradient {
