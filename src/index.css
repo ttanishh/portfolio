@@ -211,6 +211,28 @@
     color: #A0E7E5;
   }
 
+  /* Additional light mode fixes for better text visibility */
+  .light-mode button {
+    color: #333333;
+  }
+
+  .light-mode h1, 
+  .light-mode h2, 
+  .light-mode h3, 
+  .light-mode h4, 
+  .light-mode h5, 
+  .light-mode h6 {
+    color: #222222;
+  }
+
+  .light-mode p {
+    color: #333333;
+  }
+
+  .light-mode a:not(.text-gradient):not([class*="text-electric"]):not([class*="text-violet"]):not([class*="text-mint"]) {
+    color: #333333;
+  }
+
   .light-mode .text-gradient {
     @apply bg-gradient-to-r from-electric via-violet to-mint bg-clip-text text-transparent;
   }
