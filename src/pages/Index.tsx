@@ -11,6 +11,9 @@ import AchievementsSection from '../components/AchievementsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import CommandPalette from '../components/CommandPalette';
+import MonthlyGoalBanner from '../components/MonthlyGoalBanner';
+import ThemeCustomizer from '../components/ThemeCustomizer';
+import RandomThought from '../components/RandomThought';
 
 const Index: React.FC = () => {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
@@ -170,8 +173,12 @@ const Index: React.FC = () => {
         isOpen={isCommandPaletteOpen} 
         setIsOpen={setIsCommandPaletteOpen} 
       />
+      <ThemeCustomizer />
       <main>
         <HeroSection />
+        <div className="container mx-auto px-4 md:px-6">
+          <RandomThought />
+        </div>
         <ProjectsShowcase />
         <AchievementsSection />
         <ExperienceTimeline />
@@ -179,6 +186,7 @@ const Index: React.FC = () => {
         <PersonalSection />
         <ContactSection />
       </main>
+      <MonthlyGoalBanner />
       <Footer />
     </div>
   );

@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,9 +97,59 @@
     @apply bg-electric;
   }
   
+  /* Theme variants */
+  .theme-chill {
+    --electric: #69A0F3;
+    --violet: #6A8AF7;
+    --mint: #8EC5FC;
+  }
+  
+  .theme-neon {
+    --electric: #FF0099;
+    --violet: #9D50BB;
+    --mint: #FC466B;
+  }
+  
+  .theme-hacker {
+    --electric: #00FF41;
+    --violet: #08A045;
+    --mint: #39FF14;
+  }
+
   /* Theme transitions */
   body {
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    --electric: #1EAEDB;
+    --violet: #7E69AB;
+    --mint: #A0E7E5;
+  }
+  
+  /* Theme background adjustments */
+  .theme-hacker {
+    background-color: #0D0208;
+  }
+  
+  .theme-hacker.light-mode {
+    background-color: #001100;
+    color: #00FF41;
+  }
+  
+  .theme-neon {
+    background-color: #120024;
+  }
+  
+  .theme-neon.light-mode {
+    background-color: #0A0014;
+    color: #FF00FF;
+  }
+  
+  .theme-chill {
+    background-color: #061A40;
+  }
+  
+  .theme-chill.light-mode {
+    background-color: #E8F1FF;
+    color: #061A40;
   }
 }
 
@@ -198,7 +247,6 @@
   }
 
   /* Improved text visibility for light mode - Fixed circular dependency */
-  /* Instead of applying the utility class to itself, use the direct color */
   .light-mode .text-electric {
     color: #1EAEDB;
   }
@@ -233,10 +281,43 @@
     color: #333333;
   }
 
-  .light-mode .text-gradient {
-    @apply bg-gradient-to-r from-electric via-violet to-mint bg-clip-text text-transparent;
+  /* Accessibility fixes for themes */
+  .theme-hacker .light-mode button,
+  .theme-hacker .light-mode h1, 
+  .theme-hacker .light-mode h2, 
+  .theme-hacker .light-mode h3, 
+  .theme-hacker .light-mode h4, 
+  .theme-hacker .light-mode h5, 
+  .theme-hacker .light-mode h6,
+  .theme-hacker .light-mode p,
+  .theme-hacker .light-mode a:not(.text-gradient) {
+    color: #00FF41;
   }
   
+  .theme-neon .light-mode button,
+  .theme-neon .light-mode h1, 
+  .theme-neon .light-mode h2, 
+  .theme-neon .light-mode h3, 
+  .theme-neon .light-mode h4, 
+  .theme-neon .light-mode h5, 
+  .theme-neon .light-mode h6,
+  .theme-neon .light-mode p,
+  .theme-neon .light-mode a:not(.text-gradient) {
+    color: #FF00FF;
+  }
+  
+  .theme-chill .light-mode button,
+  .theme-chill .light-mode h1, 
+  .theme-chill .light-mode h2, 
+  .theme-chill .light-mode h3, 
+  .theme-chill .light-mode h4, 
+  .theme-chill .light-mode h5, 
+  .theme-chill .light-mode h6,
+  .theme-chill .light-mode p,
+  .theme-chill .light-mode a:not(.text-gradient) {
+    color: #0A2472;
+  }
+
   /* Add animation for slide down effect */
   @keyframes slide-down {
     from {
