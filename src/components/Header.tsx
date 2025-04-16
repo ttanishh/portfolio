@@ -1,8 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Terminal } from 'lucide-react';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onCommandPaletteOpen?: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onCommandPaletteOpen }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -50,16 +54,36 @@ const Header: React.FC = () => {
               {item.name}
             </a>
           ))}
+          
+          {/* Terminal button */}
+          <button
+            onClick={onCommandPaletteOpen}
+            className="flex items-center gap-1 text-white/80 hover:text-electric transition-colors light-mode:text-gray-700 light-mode:hover:text-electric"
+            aria-label="Open command terminal"
+          >
+            <Terminal size={18} />
+            <span className="text-sm">Terminal</span>
+          </button>
         </nav>
 
         {/* Mobile Navigation Toggle */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 text-white/80 hover:text-white light-mode:text-gray-700 light-mode:hover:text-gray-900"
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <button
+            onClick={onCommandPaletteOpen}
+            className="p-2 text-white/80 hover:text-electric transition-colors light-mode:text-gray-700 light-mode:hover:text-electric"
+            aria-label="Open command terminal"
+          >
+            <Terminal size={20} />
+          </button>
+          
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 text-white/80 hover:text-white light-mode:text-gray-700 light-mode:hover:text-gray-900"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation Menu */}

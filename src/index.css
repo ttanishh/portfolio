@@ -236,4 +236,20 @@
   .light-mode .text-gradient {
     @apply bg-gradient-to-r from-electric via-violet to-mint bg-clip-text text-transparent;
   }
+  
+  /* Add animation for slide down effect */
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-down {
+    animation: slide-down 0.2s ease-out;
+  }
 }

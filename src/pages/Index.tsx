@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import ParticleBackground from '../components/ParticleBackground';
 import HeroSection from '../components/HeroSection';
@@ -10,8 +10,11 @@ import PersonalSection from '../components/PersonalSection';
 import AchievementsSection from '../components/AchievementsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
+import CommandPalette from '../components/CommandPalette';
 
 const Index: React.FC = () => {
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+
   // Custom cursor effect
   useEffect(() => {
     const createCustomCursor = () => {
@@ -115,10 +118,24 @@ const Index: React.FC = () => {
       
       originalConsoleLog.apply(console, args);
     };
+
+    // Add keyboard shortcut for command palette (Ctrl+K or Cmd+K)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsCommandPaletteOpen(true);
+      } else if (e.key === '/' && document.activeElement === document.body) {
+        e.preventDefault();
+        setIsCommandPaletteOpen(true);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
     
     return () => {
       console.log = originalConsoleLog;
       if (cleanup) cleanup();
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
 
@@ -148,7 +165,11 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen bg-dark text-white overflow-x-hidden">
       <ParticleBackground />
-      <Header />
+      <Header onCommandPaletteOpen={() => setIsCommandPaletteOpen(true)} />
+      <CommandPalette 
+        isOpen={isCommandPaletteOpen} 
+        setIsOpen={setIsCommandPaletteOpen} 
+      />
       <main>
         <HeroSection />
         <ProjectsShowcase />
