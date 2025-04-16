@@ -14,7 +14,115 @@ const ThemeCustomizer: React.FC = () => {
     if (currentTheme !== 'default') {
       document.body.classList.add(`theme-${currentTheme}`);
     }
+    
+    // Apply light/dark mode independently
+    const isLightMode = document.body.classList.contains('light-mode');
+    
+    // Add appropriate visual effects based on theme
+    const addThemeEffects = () => {
+      // Remove any existing theme effects
+      const existingEffects = document.querySelectorAll('.theme-effect');
+      existingEffects.forEach(effect => effect.remove());
+      
+      if (currentTheme === 'chill') {
+        // Add snowflake effect for chill mode
+        createSnowflakes();
+      } else if (currentTheme === 'neon') {
+        // Add neon glow effect
+        createNeonGlow();
+      } else if (currentTheme === 'hacker') {
+        // Add matrix code effect
+        createMatrixEffect();
+      }
+    };
+    
+    addThemeEffects();
+    
+    return () => {
+      // Clean up theme effects when component unmounts
+      const effects = document.querySelectorAll('.theme-effect');
+      effects.forEach(effect => effect.remove());
+    };
   }, [currentTheme]);
+
+  // Create snowflake effect for chill mode
+  const createSnowflakes = () => {
+    const snowContainer = document.createElement('div');
+    snowContainer.className = 'theme-effect absolute top-0 left-0 w-full h-screen pointer-events-none overflow-hidden z-0';
+    
+    // Create 50 snowflakes
+    for (let i = 0; i < 50; i++) {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'absolute rounded-full bg-white/80 pointer-events-none animate-float';
+      snowflake.style.width = `${Math.random() * 10 + 3}px`;
+      snowflake.style.height = snowflake.style.width;
+      snowflake.style.left = `${Math.random() * 100}%`;
+      snowflake.style.top = `${Math.random() * 100}%`;
+      snowflake.style.opacity = `${Math.random() * 0.7 + 0.3}`;
+      snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`;
+      snowflake.style.animationDelay = `${Math.random() * 5}s`;
+      
+      snowContainer.appendChild(snowflake);
+    }
+    
+    document.body.appendChild(snowContainer);
+  };
+
+  // Create neon glow effect
+  const createNeonGlow = () => {
+    const glowContainer = document.createElement('div');
+    glowContainer.className = 'theme-effect fixed top-0 left-0 w-full h-screen pointer-events-none z-0';
+    
+    // Create 5 neon glow elements
+    const colors = ['#FF00FF', '#00FFFF', '#FF0099', '#9D50BB', '#FC466B'];
+    for (let i = 0; i < 5; i++) {
+      const glow = document.createElement('div');
+      glow.className = 'absolute rounded-full blur-3xl animate-pulse-glow pointer-events-none';
+      glow.style.width = `${Math.random() * 300 + 100}px`;
+      glow.style.height = glow.style.width;
+      glow.style.left = `${Math.random() * 100}%`;
+      glow.style.top = `${Math.random() * 100}%`;
+      glow.style.opacity = '0.1';
+      glow.style.backgroundColor = colors[i % colors.length];
+      glow.style.animationDuration = `${Math.random() * 8 + 4}s`;
+      
+      glowContainer.appendChild(glow);
+    }
+    
+    document.body.appendChild(glowContainer);
+  };
+
+  // Create matrix code effect
+  const createMatrixEffect = () => {
+    const matrixContainer = document.createElement('div');
+    matrixContainer.className = 'theme-effect absolute top-0 left-0 w-full h-screen pointer-events-none overflow-hidden z-0';
+    
+    // Create 20 falling code strings
+    for (let i = 0; i < 20; i++) {
+      const codeString = document.createElement('div');
+      codeString.className = 'absolute text-[#00FF41] text-opacity-30 font-mono text-xs pointer-events-none';
+      codeString.style.left = `${Math.random() * 100}%`;
+      codeString.style.top = `${Math.random() * 100}%`;
+      codeString.style.animationDuration = `${Math.random() * 10 + 8}s`;
+      codeString.style.animationDelay = `${Math.random() * 5}s`;
+      
+      // Generate random matrix-like code
+      const chars = '01';
+      let text = '';
+      const length = Math.floor(Math.random() * 15) + 5;
+      for (let j = 0; j < length; j++) {
+        text += chars.charAt(Math.floor(Math.random() * chars.length));
+        text += '<br>';
+      }
+      
+      codeString.innerHTML = text;
+      codeString.style.animation = `fall ${Math.random() * 15 + 5}s linear infinite`;
+      
+      matrixContainer.appendChild(codeString);
+    }
+    
+    document.body.appendChild(matrixContainer);
+  };
 
   return (
     <div className="fixed top-24 right-4 z-50">
