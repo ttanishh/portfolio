@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import ParticleBackground from '../components/ParticleBackground';
@@ -12,8 +11,8 @@ import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import CommandPalette from '../components/CommandPalette';
 import MonthlyGoalBanner from '../components/MonthlyGoalBanner';
-import ThemeCustomizer from '../components/ThemeCustomizer';
 import RandomThought from '../components/RandomThought';
+import CybersecuritySection from '../components/CybersecuritySection';
 
 const Index: React.FC = () => {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
@@ -173,7 +172,6 @@ const Index: React.FC = () => {
         isOpen={isCommandPaletteOpen} 
         setIsOpen={setIsCommandPaletteOpen} 
       />
-      <ThemeCustomizer />
       <main>
         <HeroSection />
         <div className="container mx-auto px-4 md:px-6">
@@ -181,6 +179,7 @@ const Index: React.FC = () => {
         </div>
         <ProjectsShowcase />
         <AchievementsSection />
+        <CybersecuritySection />
         <ExperienceTimeline />
         <TechStack />
         <PersonalSection />
