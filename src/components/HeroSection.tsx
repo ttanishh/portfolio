@@ -35,8 +35,8 @@ const HeroSection: React.FC = () => {
       ref={sectionRef} 
       className="min-h-screen flex flex-col items-center justify-center relative pt-20 pb-10 px-4"
     >
-      <div className="w-full max-w-6xl mx-auto z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="text-center md:text-left order-2 md:order-1">
+      <div className="w-full max-w-6xl mx-auto z-10 flex flex-col md:flex-row gap-8 items-center justify-between">
+        <div className="text-center md:text-left md:w-3/5">
           <h4 className="text-electric font-mono mb-4 animate-on-load opacity-0 translate-y-10 transition-all duration-700 delay-100">
             Crafting Digital Innovation
           </h4>
@@ -95,7 +95,7 @@ const HeroSection: React.FC = () => {
             <Button 
               asChild
               variant="default"
-              className="glass-card bg-gradient-glow animate-gradient-shift group flex items-center gap-2 px-6 py-6 text-white font-medium"
+              className="glass-card bg-gradient-to-r from-electric via-violet to-mint group flex items-center gap-2 px-6 py-6 text-white font-medium"
             >
               <a href="#contact">
                 <span>Let's Collaborate</span>
@@ -105,34 +105,39 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
         
-        <div className="flex justify-center md:justify-end order-1 md:order-2 animate-on-load opacity-0 translate-y-10 transition-all duration-700 delay-300">
-          <div className="relative w-72 h-72 sm:w-80 sm:h-80">
+        {/* Profile image section */}
+        <div className="md:w-2/5 animate-on-load opacity-0 translate-y-10 transition-all duration-700 delay-300">
+          <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-electric/40 via-violet/30 to-mint/20 rounded-full blur-xl"></div>
-            <div className="absolute inset-0 glass-card rounded-full overflow-hidden border-2 border-white/10 hover:border-electric/30 transition-all duration-500 shadow-lg hover:shadow-electric/20">
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80">
               <img 
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400&auto=format" 
-                alt="Tanish" 
-                className="w-full h-full object-cover"
+                src="/lovable-uploads/987dae1f-21b6-479e-8593-7a535b2896a7.png" 
+                alt="Profile" 
+                className="w-full h-full object-cover rounded-full border-2 border-white/10 hover:border-electric/30 transition-all duration-500"
               />
-            </div>
-            <div className="absolute -top-6 -right-6 w-24 h-24 glass-card rounded-full flex items-center justify-center bg-dark/60 border border-white/10 hover:border-electric/30 transition-all duration-300 shadow-lg">
-              <span className="text-mint font-mono text-sm">3+ Years</span>
-            </div>
-            <div className="absolute -bottom-4 -left-4 w-20 h-20 glass-card rounded-full flex items-center justify-center bg-dark/60 border border-white/10 hover:border-electric/30 transition-all duration-300 shadow-lg">
-              <span className="text-electric font-mono text-sm">10+ Projects</span>
+              
+              {/* Experience badge */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 glass-card rounded-full flex items-center justify-center bg-dark/60 border border-white/10 hover:border-electric/30 transition-all duration-300">
+                <span className="text-mint font-mono text-sm">3+ Years</span>
+              </div>
+              
+              {/* Projects badge */}
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 glass-card rounded-full flex items-center justify-center bg-dark/60 border border-white/10 hover:border-electric/30 transition-all duration-300">
+                <span className="text-electric font-mono text-sm">10+ Projects</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float">
-        <ArrowDown size={24} className="text-white/80" />
       </div>
 
       {/* Background decorative elements */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-electric/10 rounded-full filter blur-[120px] z-0"></div>
       <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-violet/10 rounded-full filter blur-[100px] z-0"></div>
       <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-mint/10 rounded-full filter blur-[80px] z-0"></div>
+
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float">
+        <ArrowDown size={24} className="text-white/80" />
+      </div>
     </section>
   );
 };
