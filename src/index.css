@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,28 +26,6 @@
     --ring: 240 4.9% 83.9%;
     --radius: 0.75rem;
   }
-  
-  .light-mode {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-  }
 }
 
 @layer base {
@@ -62,14 +41,6 @@
     @apply bg-dark text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
-  
-  .light-mode body {
-    @apply bg-white text-foreground;
-  }
-
-  .light-mode ::selection {
-    @apply bg-electric/30 text-dark;
-  }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
@@ -83,10 +54,6 @@
 
   ::-webkit-scrollbar-track {
     @apply bg-dark-accent;
-  }
-  
-  .light-mode ::-webkit-scrollbar-track {
-    @apply bg-gray-200;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -129,27 +96,12 @@
     background-color: #0D0208;
   }
   
-  .theme-hacker.light-mode {
-    background-color: #001100;
-    color: #00FF41;
-  }
-  
   .theme-neon {
     background-color: #120024;
   }
   
-  .theme-neon.light-mode {
-    background-color: #0A0014;
-    color: #FF00FF;
-  }
-  
   .theme-chill {
     background-color: #061A40;
-  }
-  
-  .theme-chill.light-mode {
-    background-color: #E8F1FF;
-    color: #061A40;
   }
 }
 
@@ -158,16 +110,8 @@
     @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_4px_12px_rgba(0,0,0,0.5)];
   }
   
-  .light-mode .glass {
-    @apply backdrop-blur-xl bg-black/5 border border-black/10 shadow-[0_4px_12px_rgba(0,0,0,0.1)];
-  }
-  
   .neo-blur {
     @apply backdrop-blur-2xl bg-black/40 border border-white/10;
-  }
-  
-  .light-mode .neo-blur {
-    @apply backdrop-blur-2xl bg-white/40 border border-black/10;
   }
   
   .text-gradient {
@@ -176,10 +120,6 @@
 
   .glass-card {
     @apply glass rounded-2xl transition-all duration-300 hover:shadow-[0_8px_20px_rgba(30,174,219,0.3)];
-  }
-  
-  .light-mode .glass-card {
-    @apply hover:shadow-[0_8px_20px_rgba(30,174,219,0.2)];
   }
 
   .animate-on-scroll {
@@ -214,108 +154,6 @@
     pointer-events: none;
     z-index: 9998;
     transition: transform 0.3s ease;
-  }
-  
-  /* Light mode specific styles for better text visibility */
-  .light-mode {
-    --dark: #ffffff;
-    --dark-accent: #f3f3f3;
-  }
-  
-  .light-mode .bg-dark {
-    @apply bg-white;
-  }
-  
-  .light-mode .bg-dark-accent {
-    @apply bg-gray-100;
-  }
-  
-  .light-mode .text-white {
-    @apply text-gray-800;
-  }
-  
-  .light-mode .text-white\/80 {
-    @apply text-gray-700;
-  }
-  
-  .light-mode .text-white\/60 {
-    @apply text-gray-600;
-  }
-  
-  .light-mode .border-white\/10 {
-    @apply border-gray-200;
-  }
-
-  /* Improved text visibility for light mode - Fixed circular dependency */
-  .light-mode .text-electric {
-    color: #1EAEDB;
-  }
-
-  .light-mode .text-violet {
-    color: #7E69AB;
-  }
-
-  .light-mode .text-mint {
-    color: #A0E7E5;
-  }
-
-  /* Additional light mode fixes for better text visibility */
-  .light-mode button {
-    color: #333333;
-  }
-
-  .light-mode h1, 
-  .light-mode h2, 
-  .light-mode h3, 
-  .light-mode h4, 
-  .light-mode h5, 
-  .light-mode h6 {
-    color: #222222;
-  }
-
-  .light-mode p {
-    color: #333333;
-  }
-
-  .light-mode a:not(.text-gradient):not([class*="text-electric"]):not([class*="text-violet"]):not([class*="text-mint"]) {
-    color: #333333;
-  }
-
-  /* Accessibility fixes for themes */
-  .theme-hacker .light-mode button,
-  .theme-hacker .light-mode h1, 
-  .theme-hacker .light-mode h2, 
-  .theme-hacker .light-mode h3, 
-  .theme-hacker .light-mode h4, 
-  .theme-hacker .light-mode h5, 
-  .theme-hacker .light-mode h6,
-  .theme-hacker .light-mode p,
-  .theme-hacker .light-mode a:not(.text-gradient) {
-    color: #00FF41;
-  }
-  
-  .theme-neon .light-mode button,
-  .theme-neon .light-mode h1, 
-  .theme-neon .light-mode h2, 
-  .theme-neon .light-mode h3, 
-  .theme-neon .light-mode h4, 
-  .theme-neon .light-mode h5, 
-  .theme-neon .light-mode h6,
-  .theme-neon .light-mode p,
-  .theme-neon .light-mode a:not(.text-gradient) {
-    color: #FF00FF;
-  }
-  
-  .theme-chill .light-mode button,
-  .theme-chill .light-mode h1, 
-  .theme-chill .light-mode h2, 
-  .theme-chill .light-mode h3, 
-  .theme-chill .light-mode h4, 
-  .theme-chill .light-mode h5, 
-  .theme-chill .light-mode h6,
-  .theme-chill .light-mode p,
-  .theme-chill .light-mode a:not(.text-gradient) {
-    color: #0A2472;
   }
 
   /* Add animation for slide down effect */

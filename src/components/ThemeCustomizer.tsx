@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Zap, Code } from 'lucide-react';
+import { Zap, Code, Moon } from 'lucide-react';
 
 type ThemeOption = 'default' | 'chill' | 'neon' | 'hacker';
 
@@ -14,9 +14,6 @@ const ThemeCustomizer: React.FC = () => {
     if (currentTheme !== 'default') {
       document.body.classList.add(`theme-${currentTheme}`);
     }
-    
-    // Apply light/dark mode independently
-    const isLightMode = document.body.classList.contains('light-mode');
     
     // Add appropriate visual effects based on theme
     const addThemeEffects = () => {
@@ -130,7 +127,7 @@ const ThemeCustomizer: React.FC = () => {
         className="glass-card p-3 cursor-pointer" 
         onClick={() => setIsOpen(!isOpen)}
       >
-        {currentTheme === 'default' && <Sun size={20} className="text-electric" />}
+        {currentTheme === 'default' && <Zap size={20} className="text-electric" />}
         {currentTheme === 'chill' && <Moon size={20} className="text-blue-400" />}
         {currentTheme === 'neon' && <Zap size={20} className="text-pink-500" />}
         {currentTheme === 'hacker' && <Code size={20} className="text-green-400" />}
@@ -138,13 +135,13 @@ const ThemeCustomizer: React.FC = () => {
       
       {isOpen && (
         <div className="glass-card mt-2 p-3 animate-slide-down">
-          <div className="text-sm text-white/90 mb-2 font-medium light-mode:text-gray-800">Choose a Vibe:</div>
+          <div className="text-sm text-white/90 mb-2 font-medium">Choose a Vibe:</div>
           <div className="grid grid-cols-2 gap-2">
             <button 
               className={`theme-option p-2 rounded ${currentTheme === 'default' ? 'bg-electric/20 border border-electric' : 'hover:bg-white/5'}`}
               onClick={() => setCurrentTheme('default')}
             >
-              <Sun size={18} className="mx-auto text-electric mb-1" />
+              <Zap size={18} className="mx-auto text-electric mb-1" />
               <span className="text-xs">Default</span>
             </button>
             <button 

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import ParticleBackground from '../components/ParticleBackground';
@@ -13,6 +14,7 @@ import CommandPalette from '../components/CommandPalette';
 import MonthlyGoalBanner from '../components/MonthlyGoalBanner';
 import RandomThought from '../components/RandomThought';
 import CybersecuritySection from '../components/CybersecuritySection';
+import ThemeCustomizer from '../components/ThemeCustomizer';
 
 const Index: React.FC = () => {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
@@ -187,6 +189,7 @@ const Index: React.FC = () => {
       </main>
       <MonthlyGoalBanner />
       <Footer />
+      <ThemeCustomizer />
     </div>
   );
 };
