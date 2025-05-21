@@ -40,6 +40,11 @@
   body {
     @apply bg-dark text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    --electric: #1EAEDB;
+    --violet: #7E69AB;
+    --mint: #A0E7E5;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    background-color: #0D0208;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -62,46 +67,6 @@
 
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-electric;
-  }
-  
-  /* Theme variants */
-  .theme-chill {
-    --electric: #69A0F3;
-    --violet: #6A8AF7;
-    --mint: #8EC5FC;
-  }
-  
-  .theme-neon {
-    --electric: #FF0099;
-    --violet: #9D50BB;
-    --mint: #FC466B;
-  }
-  
-  .theme-hacker {
-    --electric: #00FF41;
-    --violet: #08A045;
-    --mint: #39FF14;
-  }
-
-  /* Theme transitions */
-  body {
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    --electric: #1EAEDB;
-    --violet: #7E69AB;
-    --mint: #A0E7E5;
-  }
-  
-  /* Theme background adjustments */
-  .theme-hacker {
-    background-color: #0D0208;
-  }
-  
-  .theme-neon {
-    background-color: #120024;
-  }
-  
-  .theme-chill {
-    background-color: #061A40;
   }
 }
 
@@ -172,7 +137,7 @@
     animation: slide-down 0.2s ease-out;
   }
 
-  /* Theme effect animations */
+  /* Animation effects */
   @keyframes float {
     0%, 100% { 
       transform: translateY(0);
@@ -184,15 +149,6 @@
   
   .animate-float {
     animation: float 8s ease-in-out infinite;
-  }
-  
-  @keyframes fall {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(1000%);
-    }
   }
   
   @keyframes pulse-glow {
@@ -208,20 +164,5 @@
   
   .animate-pulse-glow {
     animation: pulse-glow 4s ease-in-out infinite;
-  }
-  
-  /* Matrix code rain effect for hacker mode */
-  @keyframes matrix-rain {
-    0% {
-      transform: translateY(-10%);
-      opacity: 1;
-    }
-    90% {
-      opacity: 0.6;
-    }
-    100% {
-      transform: translateY(120%);
-      opacity: 0;
-    }
   }
 }
