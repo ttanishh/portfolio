@@ -52,7 +52,11 @@ const ContactSection: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/contact', {
+      const API_URL = import.meta.env.PROD 
+        ? 'https://cosmic-forge-tanish-lyd1de19t-tanishs-projects-86e64b52.vercel.app/api/contact'
+        : 'http://localhost:3001/api/contact';
+      
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -102,7 +106,11 @@ const ContactSection: React.FC = () => {
     setIsSubmittingResume(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/contact', {
+      const API_URL = import.meta.env.PROD 
+        ? 'https://cosmic-forge-tanish-lyd1de19t-tanishs-projects-86e64b52.vercel.app/api/contact'
+        : 'http://localhost:3001/api/contact';
+      
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
