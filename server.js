@@ -34,7 +34,7 @@ const transporter = createTransporter();
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://cosmic-forge-tanish-lyd1de19t-tanishs-projects-86e64b52.vercel.app']
+    ? [/https:\/\/cosmic-forge-tanish.*\.vercel\.app/]
     : true,
   credentials: true
 }));

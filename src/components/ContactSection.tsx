@@ -53,7 +53,7 @@ const ContactSection: React.FC = () => {
 
     try {
       const API_URL = import.meta.env.PROD 
-        ? 'https://cosmic-forge-tanish-dzn61q54d-tanishs-projects-86e64b52.vercel.app/api/contact'
+        ? '/api/contact'
         : 'http://localhost:3001/api/contact';
       
       const response = await fetch(API_URL, {
@@ -107,7 +107,7 @@ const ContactSection: React.FC = () => {
 
     try {
       const API_URL = import.meta.env.PROD 
-        ? 'https://cosmic-forge-tanish-dzn61q54d-tanishs-projects-86e64b52.vercel.app/api/contact'
+        ? '/api/contact'
         : 'http://localhost:3001/api/contact';
       
       const response = await fetch(API_URL, {
