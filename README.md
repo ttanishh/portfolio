@@ -28,25 +28,42 @@ A modern, interactive portfolio website built with React, TypeScript, and Fireba
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v18 or higher)
 - npm or yarn
-- NeonDB account (for database)
+- Firebase account (for authentication)
+- Gmail account (for email notifications)
 
-### Installation
+### Quick Setup
 
-1. **Clone the repository**
+1. **Clone and setup**
    ```bash
    git clone <YOUR_REPO_URL>
-   cd tanish
+   cd cosmic-forge-tanish
+   node setup-dev.js
    ```
 
-2. **Install dependencies**
+2. **Configure environment variables**
+   - Edit the `.env` file created by the setup script
+   - Add your Firebase configuration
+   - Add your Gmail app password for email notifications
+
+3. **Start development**
+   ```bash
+   npm run dev:full
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:8080`
+
+### Manual Setup
+
+1. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Set up Firebase**
-   - Create a Firebase project
+2. **Set up Firebase**
+   - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
    - Enable Authentication (Email/Password and Google)
    - Create a `.env` file with your Firebase config:
    ```env
@@ -59,32 +76,23 @@ A modern, interactive portfolio website built with React, TypeScript, and Fireba
    VITE_FIREBASE_MEASUREMENT_ID=your-measurement-id
    ```
 
-4. **Set up Database**
-   - Create a NeonDB account and database
-   - Add your database URL to `.env`:
+3. **Set up Email (Optional)**
+   - Enable 2FA on your Gmail account
+   - Generate an App Password
+   - Add to `.env`:
    ```env
-   DATABASE_URL="postgresql://username:password@host:port/database?sslmode=require"
-   PORT=3001
+   EMAIL_PASS=your-gmail-app-password
    ```
 
-5. **Generate Prisma Client**
+4. **Generate Prisma Client**
    ```bash
    npx prisma generate
    ```
 
-6. **Run Database Migrations**
-   ```bash
-   npx prisma migrate dev
-   ```
-
-7. **Start the full development environment**
+5. **Start development**
    ```bash
    npm run dev:full
    ```
-   This will start both the Express server (port 3001) and Vite dev server (port 8080)
-
-8. **Open your browser**
-   Navigate to `http://localhost:8080`
 
 ## Available Scripts
 

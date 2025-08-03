@@ -5,8 +5,26 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    host: "::",
+    host: "localhost",
     port: 8080,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false,
+        configure: (proxy, _options) => {
+          proxy.on('error', (err, _req, _res) => {
+            console.log('proxy error', err);
+          });
+          proxy.on('proxyReq', (proxyReq, req, _res) => {
+            console.log('Sending Request to the Target:', req.method, req.url);
+          });
+          proxy.on('proxyRes', (proxyRes, req, _res) => {
+            console.log('Received Response from the Target:', proxyRes.statusCode, req.url);
+          });
+        },
+      }
+    }
   },
   build: {
     outDir: 'dist',
@@ -69,9 +87,6 @@ export default defineConfig(({ mode }) => ({
           // Data and state management
           'data': ['@tanstack/react-query', 'date-fns'],
           
-          // Firebase (keep separate as it's large)
-          'firebase': ['firebase'],
-          
           // Charts and UI components
           'charts': ['recharts'],
           'ui-components': ['embla-carousel-react', 'react-resizable-panels', 'vaul'],
@@ -85,12 +100,20 @@ export default defineConfig(({ mode }) => ({
       }
     }
   },
-  plugins: [
-    react(),
-  ],
+  optimizeDeps: {
+    include: ['firebase/app', 'firebase/auth', 'firebase/analytics'],
+    exclude: ['firebase']
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify('development')
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    dedupe: ['firebase']
   },
+  plugins: [
+    react(),
+  ],
 }));

@@ -52,9 +52,7 @@ const ContactSection: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const API_URL = import.meta.env.PROD 
-        ? '/api/contact'
-        : 'http://localhost:3001/api/contact';
+      const API_URL = '/api/contact';
       
       const response = await fetch(API_URL, {
         method: 'POST',
@@ -106,9 +104,7 @@ const ContactSection: React.FC = () => {
     setIsSubmittingResume(true);
 
     try {
-      const API_URL = import.meta.env.PROD 
-        ? '/api/contact'
-        : 'http://localhost:3001/api/contact';
+      const API_URL = '/api/contact';
       
       const response = await fetch(API_URL, {
         method: 'POST',
