@@ -181,12 +181,18 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📧 Contact API available at http://localhost:${PORT}/api/contact`);
-  console.log(`💚 Health check at http://localhost:${PORT}/api/health`);
-  console.log(`📬 Email notifications enabled for: ttaniishh@gmail.com`);
-});
+// For Vercel serverless functions, export the app instead of listening
+export default app;
+
+// Only listen if not in Vercel environment
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📧 Contact API available at http://localhost:${PORT}/api/contact`);
+    console.log(`💚 Health check at http://localhost:${PORT}/api/health`);
+    console.log(`📬 Email notifications enabled for: ttaniishh@gmail.com`);
+  });
+}
 
 // Graceful shutdown
 process.on('SIGINT', async () => {
