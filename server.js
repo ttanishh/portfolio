@@ -8,17 +8,36 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Email configuration
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'ttaniishh@gmail.com',
-    pass: process.env.EMAIL_PASS // Use app password for Gmail
+// Email configuration with fallback
+const createTransporter = () => {
+  try {
+    if (!process.env.EMAIL_PASS) {
+      console.log('⚠️ EMAIL_PASS not found in environment variables');
+      return null;
+    }
+    
+    return nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'ttaniishh@gmail.com',
+        pass: process.env.EMAIL_PASS
+      }
+    });
+  } catch (error) {
+    console.error('❌ Failed to create email transporter:', error);
+    return null;
   }
-});
+};
+
+const transporter = createTransporter();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://cosmic-forge-tanish-lyd1de19t-tanishs-projects-86e64b52.vercel.app']
+    : true,
+  credentials: true
+}));
 app.use(express.json());
 
 // Initialize Prisma client with error handling
@@ -35,9 +54,14 @@ try {
   console.log('⚠️  Server will start without database functionality');
 }
 
-// Email notification function
+// Email notification function with better error handling
 const sendEmailNotification = async (contactData) => {
   try {
+    if (!transporter) {
+      console.log('⚠️ Email transporter not available');
+      return false;
+    }
+
     const { name, email, purpose, message } = contactData;
     console.log(`📧 sendEmailNotification called with:`, { name, email, purpose, messageLength: message.length });
     
@@ -106,11 +130,7 @@ const sendEmailNotification = async (contactData) => {
   }
 };
 
-
-
-
-
-// Contact form endpoint
+// Contact form endpoint with improved error handling
 app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, purpose, message } = req.body;
@@ -123,25 +143,27 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
-    // Check if database is available
-    if (!prisma) {
-      return res.status(503).json({ 
-        success: false, 
-        error: 'Database service unavailable' 
-      });
+    let savedMessage = null;
+
+    // Try to save to database if available
+    if (prisma) {
+      try {
+        savedMessage = await prisma.contactMessage.create({
+          data: {
+            name,
+            email,
+            topic: purpose,
+            message,
+          },
+        });
+        console.log('✅ Contact message saved to database:', savedMessage);
+      } catch (dbError) {
+        console.error('❌ Database save failed:', dbError);
+        // Continue without database save
+      }
+    } else {
+      console.log('⚠️ Database not available, skipping save');
     }
-
-    // Create contact message in database
-    const newMessage = await prisma.contactMessage.create({
-      data: {
-        name,
-        email,
-        topic: purpose,
-        message,
-      },
-    });
-
-    console.log('✅ Contact message saved:', newMessage);
 
     // Send email notification for collaboration and resume requests
     console.log(`🔍 Checking if email should be sent for purpose: "${purpose}"`);
@@ -151,7 +173,7 @@ app.post('/api/contact', async (req, res) => {
       if (emailSent) {
         console.log(`📧 ${purpose} email notification sent`);
       } else {
-        console.log('⚠️ Email notification failed, but message was saved');
+        console.log('⚠️ Email notification failed, but message was processed');
       }
     } else {
       console.log(`📧 No email sent for purpose: "${purpose}"`);
@@ -159,7 +181,7 @@ app.post('/api/contact', async (req, res) => {
 
     return res.status(200).json({ 
       success: true, 
-      data: newMessage,
+      data: savedMessage || { name, email, purpose, message },
       message: 'Message sent successfully!' 
     });
   } catch (error) {
@@ -177,7 +199,8 @@ app.get('/api/health', (req, res) => {
     status: 'OK', 
     timestamp: new Date().toISOString(),
     database: prisma ? 'connected' : 'disconnected',
-    email: 'ttaniishh@gmail.com'
+    email: transporter ? 'configured' : 'not configured',
+    environment: process.env.NODE_ENV || 'development'
   });
 });
 
@@ -190,7 +213,8 @@ if (process.env.NODE_ENV !== 'production') {
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`📧 Contact API available at http://localhost:${PORT}/api/contact`);
     console.log(`💚 Health check at http://localhost:${PORT}/api/health`);
-    console.log(`📬 Email notifications enabled for: ttaniishh@gmail.com`);
+    console.log(`📬 Email notifications: ${transporter ? 'enabled' : 'disabled'}`);
+    console.log(`🗄️ Database: ${prisma ? 'connected' : 'disconnected'}`);
   });
 }
 
