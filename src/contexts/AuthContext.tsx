@@ -96,14 +96,25 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const loginWithGoogle = async () => {
     setIsLoading(true);
     try {
+      console.log('Starting Google login...');
       const result = await signInWithPopup(auth, googleProvider);
+      console.log('Google login successful:', result.user.email);
       setUser(convertFirebaseUser(result.user));
     } catch (error: any) {
+      console.error('Google login error:', error);
       let errorMessage = 'Google login failed';
       if (error.code === 'auth/popup-closed-by-user') {
         errorMessage = 'Login cancelled';
       } else if (error.code === 'auth/popup-blocked') {
         errorMessage = 'Popup blocked by browser. Please allow popups and try again';
+      } else if (error.code === 'auth/unauthorized-domain') {
+        errorMessage = 'Domain not authorized. Please contact administrator';
+      } else if (error.code === 'auth/network-request-failed') {
+        errorMessage = 'Network error. Please check your connection';
+      } else if (error.code === 'auth/operation-not-allowed') {
+        errorMessage = 'Google sign-in is not enabled for this app';
+      } else {
+        errorMessage = `Google login failed: ${error.message}`;
       }
       throw new Error(errorMessage);
     } finally {
