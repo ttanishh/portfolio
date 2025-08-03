@@ -1,17 +1,4 @@
-import express from 'express';
-import cors from 'cors';
 import nodemailer from 'nodemailer';
-
-const app = express();
-
-// Middleware
-app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? [/https:\/\/cosmic-forge-tanish.*\.vercel\.app/]
-    : true,
-  credentials: true
-}));
-app.use(express.json());
 
 // Email configuration with fallback
 const createTransporter = () => {
@@ -114,11 +101,13 @@ const sendEmailNotification = async (contactData) => {
 
 // Contact form endpoint
 export default async function handler(req, res) {
+  // Set CORS headers for all requests
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.status(200).end();
     return;
   }
