@@ -17,10 +17,6 @@ const Footer: React.FC = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="#" className="text-white/70 hover:text-white transition-colors flex items-center gap-1 light-mode:text-gray-700 light-mode:hover:text-gray-900">
-              <FileText size={18} />
-              <span>Resume</span>
-            </a>
             <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors flex items-center gap-1 light-mode:text-gray-700 light-mode:hover:text-gray-900">
               <Github size={18} />
               <span>GitHub</span>
@@ -44,16 +40,6 @@ const Footer: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#" className="text-white/60 hover:text-white text-sm transition-colors light-mode:text-gray-600 light-mode:hover:text-gray-900">
               Type 'tanish --help' in console
-            </a>
-            <span className="text-white/40 light-mode:text-gray-400">|</span>
-            <a 
-              href="https://github.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-electric/80 hover:text-electric flex items-center gap-1 text-sm transition-colors"
-            >
-              <span>View Source</span>
-              <ExternalLink size={14} />
             </a>
           </div>
         </div>

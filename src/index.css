@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -34,7 +33,12 @@
   }
   
   html {
-    @apply scroll-smooth;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Enable smooth scrolling only after page is loaded */
+  html.loaded {
+    scroll-behavior: smooth !important;
   }
 
   body {
@@ -164,5 +168,31 @@
   
   .animate-pulse-glow {
     animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  /* --- Experience Timeline Custom Styles --- */
+  .timeline-dot {
+    @apply absolute rounded-full border-4 border-white/20 bg-gradient-to-br from-electric via-violet to-mint shadow-lg z-20 transition-all duration-500;
+  }
+  .timeline-dot-hidden {
+    @apply scale-75 opacity-60;
+  }
+  .timeline-dot-visible {
+    @apply scale-100 opacity-100;
+  }
+  .timeline-card {
+    @apply glass-card mt-2 md:ml-12 shadow-xl hover:shadow-[0_12px_32px_rgba(30,174,219,0.25)] group transition-all duration-300;
+  }
+  .timeline-card:focus-within {
+    @apply ring-2 ring-electric/60;
+  }
+  .timeline-link {
+    @apply transition shadow hover:scale-105 focus:outline-none focus:ring-2;
+  }
+  .timeline-link-linkedin {
+    @apply focus:ring-electric/60;
+  }
+  .timeline-link-certificate {
+    @apply focus:ring-violet/60;
   }
 }

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import ParticleBackground from '../components/ParticleBackground';
@@ -6,17 +5,65 @@ import HeroSection from '../components/HeroSection';
 import ProjectsShowcase from '../components/ProjectsShowcase';
 import ExperienceTimeline from '../components/ExperienceTimeline';
 import TechStack from '../components/TechStack';
+import TechExploration from '../components/TechExploration';
 import PersonalSection from '../components/PersonalSection';
 import AchievementsSection from '../components/AchievementsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import CommandPalette from '../components/CommandPalette';
-import MonthlyGoalBanner from '../components/MonthlyGoalBanner';
 import RandomThought from '../components/RandomThought';
-import CybersecuritySection from '../components/CybersecuritySection';
+
 
 const Index: React.FC = () => {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+
+  // Handle URL hash fragments to prevent unwanted auto-scrolling
+  useEffect(() => {
+    // Disable scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    
+    // Clear any hash fragment from the URL to prevent auto-scrolling
+    if (window.location.hash) {
+      // Remove the hash from URL
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+    
+    // Force scroll to top immediately
+    window.scrollTo(0, 0);
+    
+    // Prevent any focus-based scrolling
+    document.body.style.scrollBehavior = 'auto';
+    
+    // Remove focus from any focused elements
+    if (document.activeElement && document.activeElement !== document.body) {
+      (document.activeElement as HTMLElement).blur();
+    }
+    
+    // Prevent scroll events during initial load
+    let isInitialLoad = true;
+    const preventInitialScroll = (e: Event) => {
+      if (isInitialLoad && window.scrollY > 50) {
+        e.preventDefault();
+        window.scrollTo(0, 0);
+      }
+    };
+    
+    window.addEventListener('scroll', preventInitialScroll, { passive: false });
+    
+    // Add 'loaded' class to enable smooth scrolling after page load
+    const timer = setTimeout(() => {
+      document.documentElement.classList.add('loaded');
+      document.body.style.scrollBehavior = '';
+      isInitialLoad = false;
+    }, 500);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', preventInitialScroll);
+    };
+  }, []);
 
   // Custom cursor effect
   useEffect(() => {
@@ -178,15 +225,14 @@ const Index: React.FC = () => {
         <div className="container mx-auto px-4 md:px-6">
           <RandomThought />
         </div>
-        <ProjectsShowcase />
-        <AchievementsSection />
-        <CybersecuritySection />
         <ExperienceTimeline />
+        <ProjectsShowcase />        
         <TechStack />
-        <PersonalSection />
+        <TechExploration />
+        <AchievementsSection />
         <ContactSection />
+        <PersonalSection />
       </main>
-      <MonthlyGoalBanner />
       <Footer />
     </div>
   );

@@ -8,65 +8,73 @@ interface SkillCategory {
 
 interface Skill {
   name: string;
-  proficiency: number;
-  experience: string;
+  image: string;
 }
 
 const skillCategories: SkillCategory[] = [
   {
     name: "Frontend",
     skills: [
-      { name: "React", proficiency: 90, experience: "3 years" },
-      { name: "TypeScript", proficiency: 85, experience: "2 years" },
-      { name: "Next.js", proficiency: 80, experience: "1.5 years" },
-      { name: "Tailwind CSS", proficiency: 95, experience: "2.5 years" },
-      { name: "Redux", proficiency: 75, experience: "2 years" },
+      { name: "React", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "TypeScript", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "Tailwind CSS", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" },
+      { name: "Vite", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" }
     ]
   },
   {
-    name: "Backend",
+    name: "Backend & Database",
     skills: [
-      { name: "Node.js", proficiency: 85, experience: "3 years" },
-      { name: "Express", proficiency: 90, experience: "3 years" },
-      { name: "MongoDB", proficiency: 80, experience: "2.5 years" },
-      { name: "PostgreSQL", proficiency: 75, experience: "2 years" },
-      { name: "GraphQL", proficiency: 70, experience: "1 year" },
+      { name: "Node.js", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "Python", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "Express", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+      { name: "Firebase", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
+      { name: "PostgreSQL", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" }
     ]
   },
   {
-    name: "AI / ML",
+    name: "AI / ML / Data",
     skills: [
-      { name: "Python", proficiency: 95, experience: "4 years" },
-      { name: "TensorFlow", proficiency: 80, experience: "2 years" },
-      { name: "PyTorch", proficiency: 75, experience: "1.5 years" },
-      { name: "Scikit-Learn", proficiency: 85, experience: "3 years" },
-      { name: "NLP", proficiency: 70, experience: "1 year" },
+      { name: "TensorFlow", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+      { name: "PyTorch", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
+      { name: "Scikit-Learn", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" },
+      { name: "Pandas", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+      { name: "Jupyter", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" }
     ]
   },
   {
-    name: "Blockchain",
+    name: "Blockchain & Web3",
     skills: [
-      { name: "Solidity", proficiency: 80, experience: "1.5 years" },
-      { name: "Web3.js", proficiency: 75, experience: "1 year" },
-      { name: "Smart Contracts", proficiency: 85, experience: "1.5 years" },
-      { name: "Ethereum", proficiency: 80, experience: "2 years" },
-      { name: "Hardhat", proficiency: 70, experience: "1 year" },
+      { name: "Solidity", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+      { name: "Ethereum", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ethereum/ethereum-original.svg" },
+      { name: "Truffle", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/truffle/truffle-original.svg" },
+      { name: "Hardhat", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hardhat/hardhat-original.svg" },
+      { name: "Web3.js", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/web3js/web3js-original.svg" }
     ]
   },
   {
-    name: "DevOps",
+    name: "DevOps & Cloud",
     skills: [
-      { name: "Docker", proficiency: 85, experience: "2 years" },
-      { name: "Kubernetes", proficiency: 70, experience: "1 year" },
-      { name: "CI/CD", proficiency: 80, experience: "1.5 years" },
-      { name: "AWS", proficiency: 75, experience: "1.5 years" },
-      { name: "Linux", proficiency: 90, experience: "3 years" },
+      { name: "Docker", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+      { name: "AWS", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
+      { name: "Kubernetes", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
+      { name: "Jenkins", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
+      { name: "Vercel", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" }
+    ]
+  },
+  {
+    name: "Tools & Platforms",
+    skills: [
+      { name: "Git", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "GitHub", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+      { name: "VS Code", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+      { name: "Unity", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" },
+      { name: "C#", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" }
     ]
   }
 ];
 
 const TechStack: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -97,144 +105,94 @@ const TechStack: React.FC = () => {
       ref={sectionRef}
       className="py-20 px-4 relative"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl md:text-4xl font-bold mb-2 text-center md:text-left">
             <span className="text-gradient">Tech Stack</span> Matrix
           </h2>
           <p className="text-white/70 max-w-2xl mb-12 text-center md:text-left">
-            A visual representation of my technical expertise and experience across different domains.
+            Technologies and tools I work with across different domains.
           </p>
         </div>
 
-        <div className="glass-card p-6 md:p-8 overflow-hidden">
-          <div className="mb-8 flex flex-wrap gap-3">
-            {skillCategories.map((category, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveCategory(index)}
-                className={`px-4 py-2 rounded-full transition-all ${
-                  index === activeCategory
-                    ? 'bg-electric text-white'
-                    : 'bg-dark-accent text-white/70 hover:text-white'
-                } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                style={{ transitionDelay: `${100 + index * 100}ms` }}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
+        {/* Category Grid */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
+          {skillCategories.map((category, categoryIndex) => (
+            <div 
+              key={categoryIndex}
+              className={`glass-card p-6 rounded-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-electric/20 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${300 + categoryIndex * 100}ms` }}
+            >
+              {/* Category Header */}
+              <div className="mb-6">
+                <h3 className="text-xl font-bold mb-2 text-electric">{category.name}</h3>
+                <div className="w-12 h-1 bg-gradient-to-r from-electric to-violet rounded-full"></div>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              {skillCategories[activeCategory].skills.map((skill, index) => (
-                <div 
-                  key={index}
-                  className={`mb-5 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
-                  style={{ transitionDelay: `${200 + index * 100}ms` }}
-                >
-                  <div className="flex justify-between mb-1">
-                    <span className="font-medium">{skill.name}</span>
-                    <span className="text-electric">{skill.experience}</span>
-                  </div>
-                  <div className="w-full h-2 bg-dark-accent rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-electric to-violet rounded-full transition-all duration-1000 ease-out"
-                      style={{ 
-                        width: isVisible ? `${skill.proficiency}%` : '0%',
-                        transitionDelay: `${300 + index * 100}ms`
-                      }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className={`relative h-80 bg-dark-accent rounded-lg overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative w-64 h-64">
-                  {/* Radar Chart Background */}
-                  <div className="absolute inset-0 rounded-full border border-white/10"></div>
-                  <div className="absolute inset-[15%] rounded-full border border-white/10"></div>
-                  <div className="absolute inset-[30%] rounded-full border border-white/10"></div>
-                  <div className="absolute inset-[45%] rounded-full border border-white/10"></div>
-                  <div className="absolute inset-[60%] rounded-full border border-white/10"></div>
-                  <div className="absolute inset-[75%] rounded-full border border-white/10"></div>
-                  
-                  {/* Axes */}
-                  <div className="absolute top-0 left-1/2 bottom-0 -translate-x-1/2 w-px bg-white/10"></div>
-                  <div className="absolute left-0 top-1/2 right-0 -translate-y-1/2 h-px bg-white/10"></div>
-                  <div className="absolute top-0 left-0 bottom-0 right-0 rotate-45 w-px mx-auto bg-white/10"></div>
-                  <div className="absolute top-0 left-0 bottom-0 right-0 -rotate-45 w-px mx-auto bg-white/10"></div>
-                  
-                  {/* Radar Chart Points */}
-                  {skillCategories.map((category, index) => {
-                    const angle = (index * (2 * Math.PI)) / skillCategories.length;
-                    const avgProficiency = category.skills.reduce((sum, skill) => sum + skill.proficiency, 0) / category.skills.length;
-                    const radius = (avgProficiency / 100) * 32;
-                    const x = 32 + radius * Math.sin(angle);
-                    const y = 32 - radius * Math.cos(angle);
-                    
-                    return (
-                      <div
-                        key={index}
-                        className={`absolute w-3 h-3 rounded-full transition-all duration-1000 ${
-                          activeCategory === index ? 'bg-electric' : 'bg-violet'
-                        } ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
-                        style={{ 
-                          left: `${x}%`, 
-                          top: `${y}%`,
-                          transitionDelay: `${400 + index * 100}ms`,
-                          transform: activeCategory === index ? 'scale(1.5)' : 'scale(1)',
-                          boxShadow: activeCategory === index ? '0 0 10px rgba(30, 174, 219, 0.7)' : 'none',
+              {/* Skills Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {category.skills.map((skill, skillIndex) => (
+                  <div 
+                    key={skillIndex}
+                    className={`flex flex-col items-center p-4 rounded-lg bg-dark-accent/30 hover:bg-dark-accent/50 transition-all duration-300 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                    style={{ transitionDelay: `${400 + categoryIndex * 100 + skillIndex * 50}ms` }}
+                  >
+                    <div className="w-14 h-14 mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-white/5 rounded-xl p-2 group-hover:bg-white/10">
+                      <img 
+                        src={skill.image} 
+                        alt={skill.name}
+                        className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
+                        onError={(e) => {
+                          // Fallback for missing images
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.nextElementSibling?.classList.remove('hidden');
                         }}
-                      ></div>
-                    );
-                  })}
-                  
-                  {/* Radar Chart Lines */}
-                  <svg className="absolute inset-0 w-full h-full" style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 1s ease-out', transitionDelay: '500ms' }}>
-                    <polygon
-                      points={skillCategories.map((category, index) => {
-                        const angle = (index * (2 * Math.PI)) / skillCategories.length;
-                        const avgProficiency = category.skills.reduce((sum, skill) => sum + skill.proficiency, 0) / category.skills.length;
-                        const radius = (avgProficiency / 100) * 32;
-                        const x = 32 + radius * Math.sin(angle);
-                        const y = 32 - radius * Math.cos(angle);
-                        return `${x},${y}`;
-                      }).join(' ')}
-                      fill="rgba(30, 174, 219, 0.1)"
-                      stroke="rgba(30, 174, 219, 0.5)"
-                      strokeWidth="1"
-                    />
-                  </svg>
-                  
-                  {/* Category Labels */}
-                  {skillCategories.map((category, index) => {
-                    const angle = (index * (2 * Math.PI)) / skillCategories.length;
-                    const x = 32 + 35 * Math.sin(angle);
-                    const y = 32 - 35 * Math.cos(angle);
-                    
-                    return (
-                      <div
-                        key={index}
-                        className={`absolute text-xs font-medium transition-all duration-1000 ${
-                          activeCategory === index ? 'text-electric' : 'text-white/70'
-                        } ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-                        style={{ 
-                          left: `${x}%`, 
-                          top: `${y}%`, 
-                          transform: 'translate(-50%, -50%)',
-                          transitionDelay: `${500 + index * 100}ms`,
-                        }}
-                      >
-                        {category.name}
+                      />
+                      <div className="hidden w-full h-full bg-gradient-to-br from-electric to-violet rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        {skill.name.charAt(0)}
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                    <span className="text-sm font-medium text-white/90 text-center group-hover:text-white transition-colors">
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* All Technologies Overview */}
+        <div className={`mt-12 glass-card p-6 md:p-8 rounded-xl transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
+          <h3 className="text-2xl font-bold mb-6 text-center text-electric">All Technologies</h3>
+          
+          <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4">
+            {skillCategories.flatMap(category => category.skills).map((skill, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center p-3 rounded-lg bg-dark-accent/30 hover:bg-dark-accent/50 transition-all duration-300 group"
+              >
+                <div className="w-12 h-12 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-white/5 rounded-lg p-2 group-hover:bg-white/10">
+                  <img 
+                    src={skill.image} 
+                    alt={skill.name}
+                    className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
+                  <div className="hidden w-full h-full bg-gradient-to-br from-electric to-violet rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                    {skill.name.charAt(0)}
+                  </div>
+                </div>
+                <span className="text-xs font-medium text-white/80 text-center group-hover:text-white transition-colors">
+                  {skill.name}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
