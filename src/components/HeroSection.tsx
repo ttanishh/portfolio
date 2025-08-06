@@ -68,7 +68,7 @@ const HeroSection: React.FC = () => {
                 <span>U22CS069, B.Tech in Computer Science and Engineering, SVNIT'26</span>
               </div>
               <h4 className="text-electric font-mono text-lg md:text-xl">
-                Developing with Vision; Fostering TechoCommercial.
+                Developing with Vision; Fostering TechnoCommercial.
               </h4>
             </div>
             
@@ -86,7 +86,7 @@ const HeroSection: React.FC = () => {
             <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
               {user 
                 ? "Ready to collaborate on something amazing? Let's build the future together!"
-                : "Passionate about creating innovative solutions that make a difference. Explore my work and let's connect!"
+                : "Delivering Engineering Brilliance—Smart, Secure, and Always Ready to Grow."
               }
             </p>
 
