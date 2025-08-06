@@ -8,8 +8,10 @@ import nodemailer from 'nodemailer';
 // Load environment variables
 dotenv.config();
 
-// Force NODE_ENV to development for local development
-process.env.NODE_ENV = 'development';
+// Set NODE_ENV to development only for local development
+if (process.env.NODE_ENV !== 'production') {
+  process.env.NODE_ENV = 'development';
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

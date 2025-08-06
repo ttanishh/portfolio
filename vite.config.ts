@@ -105,7 +105,7 @@ export default defineConfig(({ mode }) => ({
     exclude: ['firebase']
   },
   define: {
-    'process.env.NODE_ENV': JSON.stringify('development')
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
   },
   resolve: {
     alias: {
