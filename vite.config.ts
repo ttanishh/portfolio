@@ -101,8 +101,8 @@ export default defineConfig(({ mode }) => ({
     }
   },
   optimizeDeps: {
-    include: ['firebase/app', 'firebase/auth', 'firebase/analytics'],
-    exclude: ['firebase']
+    include: ['firebase/app', 'firebase/auth'],
+    exclude: []
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
@@ -110,8 +110,7 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-    },
-    dedupe: ['firebase']
+    }
   },
   plugins: [
     react(),
