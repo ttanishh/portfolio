@@ -11,7 +11,7 @@ const createTransporter = () => {
     return nodemailer.createTransporter({
       service: 'gmail',
       auth: {
-        user: 'ttaniishh@gmail.com',
+        user: 'tp66182303@gmail.com',
         pass: process.env.EMAIL_PASS
       }
     });
@@ -41,8 +41,8 @@ const sendEmailNotification = async (contactData) => {
     
     // Email to you (the portfolio owner)
     const mailOptions = {
-      from: 'ttaniishh@gmail.com',
-      to: 'ttaniishh@gmail.com',
+      from: 'tp66182303@gmail.com',
+      to: 'tp66182303@gmail.com',
       subject: subject,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa;">

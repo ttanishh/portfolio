@@ -46,7 +46,7 @@ const createTransporter = () => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'ttaniishh@gmail.com',
+        user: 'tp66182303@gmail.com',
         pass: process.env.EMAIL_PASS
       }
     });
@@ -101,8 +101,8 @@ app.post('/api/contact', async (req, res) => {
           : `🤝 New ${purpose.charAt(0).toUpperCase() + purpose.slice(1)} Request from ${name}`;
         
         const mailOptions = {
-          from: 'ttaniishh@gmail.com',
-          to: 'ttaniishh@gmail.com',
+          from: 'tp66182303@gmail.com',
+          to: 'tp66182303@gmail.com',
           subject: subject,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa;">
