@@ -99,13 +99,16 @@ export default defineConfig(({ mode }) => ({
           'routing': ['react-router-dom'],
           
           // Notifications
-          'notifications': ['sonner']
+          'notifications': ['sonner'],
+          
+          // Firebase - handle separately to avoid resolution issues
+          'firebase': ['firebase/app', 'firebase/auth']
         }
       }
     }
   },
   optimizeDeps: {
-    include: []
+    include: ['firebase/app', 'firebase/auth']
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
@@ -118,7 +121,5 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
   ],
-  ssr: {
-    noExternal: ['firebase']
-  }
+
 }));
