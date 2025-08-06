@@ -78,7 +78,7 @@ const HeroSection: React.FC = () => {
                 Hi, I'm <span className="text-gradient">Tanish</span>
               </h1>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white/90 leading-tight">
-                Engineering <span className="text-electric">Smart</span>, <span className="text-violet">Secure</span>, and <span className="text-mint">Scalable</span> Ideas
+                Delivering Engineering Brilliance - <span className="text-electric">Smart</span>, <span className="text-violet">Secure</span>, and <span className="text-mint">Always Ready to Grow...</span> Ideas
               </h2>
             </div>
             
