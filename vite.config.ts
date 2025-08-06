@@ -31,6 +31,10 @@ export default defineConfig(({ mode }) => ({
     sourcemap: false,
     minify: 'terser',
     chunkSizeWarningLimit: 1000, // Increase to 1MB to avoid warnings
+    commonjsOptions: {
+      include: [/node_modules/],
+      transformMixedEsModules: true
+    },
     rollupOptions: {
       output: {
         manualChunks: {
@@ -101,8 +105,8 @@ export default defineConfig(({ mode }) => ({
     }
   },
   optimizeDeps: {
-    include: ['firebase/app', 'firebase/auth'],
-    exclude: []
+    include: [],
+    exclude: ['firebase']
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
@@ -110,7 +114,8 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-    }
+    },
+    dedupe: ['firebase']
   },
   plugins: [
     react(),
