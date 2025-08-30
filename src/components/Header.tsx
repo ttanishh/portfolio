@@ -65,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ onCommandPaletteOpen }) => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <Terminal size={24} className="text-electric" />
+            <img src="/favicon.ico" alt="Logo" className="w-6 h-6" />
             <span className="text-xl font-bold text-white">Tanish</span>
           </div>
 
