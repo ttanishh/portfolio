@@ -107,7 +107,7 @@ const TechStack: React.FC = () => {
           {skillCategories.map((category, categoryIndex) => (
             <div 
               key={categoryIndex}
-              className={`glass-card p-6 rounded-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-electric/20 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}
+              className={`glass-card p-6 rounded-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-electric/20 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'} ${category.name === "Computer Science Fundamentals" ? "md:col-span-2 lg:col-span-3" : ""}`}
               style={{ transitionDelay: `${300 + categoryIndex * 100}ms` }}
             >
               {/* Category Header */}
@@ -117,28 +117,36 @@ const TechStack: React.FC = () => {
               </div>
 
               {/* Skills Grid */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className={category.name === "Computer Science Fundamentals" ? "flex gap-3 justify-center w-full" : "grid grid-cols-2 gap-4"}>
                 {category.skills.map((skill, skillIndex) => (
                   <div 
                     key={skillIndex}
                     className={`flex flex-col items-center p-4 rounded-lg bg-dark-accent/30 hover:bg-dark-accent/50 transition-all duration-300 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                     style={{ transitionDelay: `${400 + categoryIndex * 100 + skillIndex * 50}ms` }}
                   >
-                    <div className="w-14 h-14 mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-white/5 rounded-xl p-2 group-hover:bg-white/10">
-                      <img 
-                        src={skill.image} 
-                        alt={skill.name}
-                        className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
-                        onError={(e) => {
-                          // Fallback for missing images
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          target.nextElementSibling?.classList.remove('hidden');
-                        }}
-                      />
-                      <div className="hidden w-full h-full bg-gradient-to-br from-electric to-violet rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        {skill.name.charAt(0)}
-                      </div>
+                    <div className={category.name === "Computer Science Fundamentals" ? "w-20 h-20 mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-white/5 rounded-xl p-2 group-hover:bg-white/10" : "w-14 h-14 mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-white/5 rounded-xl p-2 group-hover:bg-white/10"}>
+                      {category.name === "Computer Science Fundamentals" ? (
+                        <div className="w-full h-full bg-gradient-to-br from-electric to-violet rounded-lg flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                          {skill.image}
+                        </div>
+                      ) : (
+                        <>
+                          <img 
+                            src={skill.image} 
+                            alt={skill.name}
+                            className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
+                            onError={(e) => {
+                              // Fallback for missing images
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              target.nextElementSibling?.classList.remove('hidden');
+                            }}
+                          />
+                          <div className="hidden w-full h-full bg-gradient-to-br from-electric to-violet rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                            {skill.name.charAt(0)}
+                          </div>
+                        </>
+                      )}
                     </div>
                     <span className="text-sm font-medium text-white/90 text-center group-hover:text-white transition-colors">
                       {skill.name}
@@ -150,38 +158,7 @@ const TechStack: React.FC = () => {
           ))}
         </div>
 
-        {/* All Technologies Overview */}
-        <div className={`mt-12 glass-card p-6 md:p-8 rounded-xl transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-2xl font-bold mb-6 text-center text-electric">All Technologies</h3>
-          
-          <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-4">
-            {skillCategories.flatMap(category => category.skills).map((skill, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center p-3 rounded-lg bg-dark-accent/30 hover:bg-dark-accent/50 transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 bg-white/5 rounded-lg p-2 group-hover:bg-white/10">
-                  <img 
-                    src={skill.image} 
-                    alt={skill.name}
-                    className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      target.nextElementSibling?.classList.remove('hidden');
-                    }}
-                  />
-                  <div className="hidden w-full h-full bg-gradient-to-br from-electric to-violet rounded-lg flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                    {skill.name.charAt(0)}
-                  </div>
-                </div>
-                <span className="text-xs font-medium text-white/80 text-center group-hover:text-white transition-colors">
-                  {skill.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+
       </div>
     </section>
   );
