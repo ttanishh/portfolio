@@ -51,12 +51,12 @@ const skillCategories: SkillCategory[] = [
   {
     name: "Computer Science Fundamentals",
     skills: [
-      { name: "Data Structures & Algorithms", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-      { name: "Operating Systems", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
-      { name: "Object-Oriented Programming", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-      { name: "System Design", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-      { name: "Database Management Systems", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-      { name: "Computer Networks", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" }
+      { name: "DSA", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "OS", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
+      { name: "OOPS", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { name: "SD", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+      { name: "DBMS", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+      { name: "CN", image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" }
     ]
   }
 ];
