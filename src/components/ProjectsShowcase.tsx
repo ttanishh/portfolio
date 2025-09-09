@@ -522,6 +522,68 @@ const projects: Project[] = [
     ],
     collaborationOpen: false
   }
+  ,
+  {
+    id: 8,
+    title: "Tanish Email Assistant 🚀",
+    description: "AI-powered Chrome extension that generates context-aware email replies using Spring Boot backend and Google Gemini API.",
+    detailedDescription: "Tanish Email Assistant is a sophisticated Chrome extension that seamlessly integrates with Gmail to generate intelligent, context-aware replies in seconds. Built with a robust Java Spring Boot backend and powered by Google's Gemini API, it provides professional, privacy-focused responses with multiple suggestion options, sub-second processing, and graceful error handling.",
+    image: "https://images.pexels.com/photos/261662/pexels-photo-261662.jpeg",
+    status: "Demo",
+    role: "Backend (Spring Boot) & Extension Developer",
+    stack: [
+      "Java", "Spring Boot", "Maven", "REST APIs", "Google Gemini API",
+      "Chrome Extension", "JavaScript", "Docker", "Tomcat"
+    ],
+    github: "https://github.com/yourusername/tanish-email-assistant",
+    demo: undefined,
+    collaborators: [
+      { name: "Tanish Panchal", url: "https://github.com/ttanishh", role: "Developer" }
+    ],
+    insights: [
+      "⚡ One-click AI reply generation directly inside Gmail",
+      "🧠 Context-aware responses based on subject and email body",
+      "✅ Professional tone with privacy-first design",
+      "📈 Scalable, secure Spring Boot backend with robust logging"
+    ],
+    features: [
+      "One-click AI Reply",
+      "Context understanding (subject + content)",
+      "Multiple smart suggestions",
+      "Professional tone presets",
+      "Error handling and graceful fallbacks"
+    ],
+    technicalDetails: {
+      architecture: "Chrome Extension frontend communicating with Spring Boot backend which integrates with Google Gemini for content generation.",
+      performance: [
+        "Sub-2s typical response time",
+        "Stateless, horizontally scalable backend",
+        "Connection pooling for external API calls"
+      ],
+      security: [
+        "Env-based API key management",
+        "No email content stored server-side",
+        "HTTPS-ready deployment"
+      ],
+      challenges: [
+        "Maintaining tone and context fidelity",
+        "Handling Gmail DOM variations",
+        "Robust error messaging for network/API failures"
+      ],
+      futureEnhancements: [
+        "User auth and personalization",
+        "Templates and styles",
+        "Multi-language support",
+        "Advanced model options and analytics"
+      ]
+    },
+    useCases: [
+      "Rapid professional email replies",
+      "Drafting client communications",
+      "Productivity boosts for support/sales teams"
+    ],
+    collaborationOpen: false
+  }
 ];
 
 const ProjectsShowcase: React.FC = () => {
