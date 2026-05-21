@@ -10,24 +10,24 @@ export interface LabItem {
 
 export const skillGroups: SkillCategory[] = [
   {
-    title: "Backend",
-    skills: ["Python", "FastAPI", "Node.js", "Spring Boot", "Go"]
+    title: "Programming",
+    skills: ["Python", "JavaScript", "Java", "C++", "SQL", "HTML5"]
   },
   {
-    title: "AI / ML",
-    skills: ["NLP", "BERT", "RAG", "LLMs", "PyTorch", "TensorFlow"]
+    title: "Frameworks",
+    skills: ["PyTorch", "SpringBoot", "React", "Next", "Node", "FastAPI", "Streamlit", "Kafka"]
   },
   {
-    title: "Cloud & DevOps",
-    skills: ["Docker", "Kubernetes", "Kafka", "AWS", "CI/CD"]
+    title: "Tools",
+    skills: ["Postman", "GitHub", "Docker", "Jenkins"]
   },
   {
     title: "Databases",
-    skills: ["PostgreSQL", "MongoDB", "Redis", "Vector Databases"]
+    skills: ["MySQL", "NoSQL", "MongoDB"]
   },
   {
-    title: "Frontend",
-    skills: ["React", "Next.js", "Tailwind CSS", "TypeScript"]
+    title: "CS Fundamentals",
+    skills: ["DSA", "OS", "OOPS", "System Design", "DBMS", "CN"]
   }
 ];
 

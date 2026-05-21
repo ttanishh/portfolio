@@ -15,55 +15,55 @@ export interface Experience {
 
 export const journey: TimelineItem[] = [
   {
-    period: "2020",
-    title: "Genesis of Code",
-    text: "Began my journey with Python and C++, exploring the fundamentals of algorithms and data structures while building small scale CLI tools.",
-  },
-  {
-    period: "2021",
-    title: "Intelligence Layer",
-    text: "Secured an AI internship focused on NLP models. Gained hands-on experience with BERT and transformer architectures to solve sentiment analysis problems.",
-  },
-  {
-    period: "2022",
-    title: "Scaling the Backend",
-    text: "Shifted focus to distributed systems. Started building scalable backend services and explored event-driven architectures using Apache Kafka.",
-  },
-  {
-    period: "2023",
-    title: "Trustless Systems",
-    text: "Dived into Web3 and blockchain development. Built smart contracts and decentralized authentication protocols to ensure user-centric data sovereignty.",
+    period: "2024",
+    title: "NextGen Digital Transformation",
+    text: "Joined UPL (SUPERFORM) as an intern, contributing to enterprise-level logistics solutions and witnessing digital transformation in specialty chemicals.",
   },
   {
     period: "2024",
-    title: "Autonomous Intelligence",
-    text: "Current focus is synthesizing AI and distributed systems to build autonomous, scalable agents and high-fidelity RAG pipelines for production.",
+    title: "Technical Mentorship",
+    text: "Led mentorship initiatives at Nexus, SVNIT Surat, guiding 50+ students through the complexities of DSA and Full Stack Web Development.",
+  },
+  {
+    period: "2024",
+    title: "AR Innovation",
+    text: "Developed sophisticated AR applications for Mindbend 2024, focusing on secure identity verification using Unity and Vuforia.",
+  },
+  {
+    period: "2023",
+    title: "Blockchain & Security",
+    text: "Dived deep into Web3 and Decentralized Identity, building trustless authentication systems and exploring smart contract security.",
+  },
+  {
+    period: "2022",
+    title: "Foundations of AI & Systems",
+    text: "Started exploring Distributed Systems and Machine Learning, focusing on scalable backend architectures and NLP model integration.",
   }
 ];
 
 export const experiences: Experience[] = [
   {
-    role: "AI Systems Engineer",
-    organization: "Tech Innovators Lab",
-    duration: "Jan 2024 - Present",
-    technologies: ["Python", "PyTorch", "FastAPI", "Docker", "Pinecone"],
+    role: "AI & Full Stack Developer Intern",
+    organization: "UPL (SUPERFORM)",
+    duration: "June 2024 - July 2024",
+    technologies: ["Next.js", "Node.js", "MongoDB", "Mapbox", "Chart.js", "Tailwind CSS"],
     achievements: [
-      "Designed and deployed a production-grade RAG pipeline for internal document retrieval.",
-      "Optimized model inference latency by 30% using quantization and efficient caching strategies.",
-      "Led the transition to a microservices architecture for AI model deployment."
+      "Developed a comprehensive enterprise-grade Smart Logistics Dashboard.",
+      "Integrated real-time GPS tracking and route optimization algorithms.",
+      "Implemented predictive maintenance alerts reducing vehicle downtime by 15%."
     ],
-    impact: "Streamlined data access for 50+ researchers, reducing query response times significantly."
+    impact: "Achieved a 12.4% reduction in Turnaround Time (TAT) and enhanced operational efficiency for global supply chains."
   },
   {
-    role: "Backend Developer",
-    organization: "Scalable Systems Corp",
-    duration: "June 2022 - Dec 2023",
-    technologies: ["Node.js", "Go", "Kafka", "PostgreSQL", "Kubernetes"],
+    role: "Lead Technical Mentor",
+    organization: "Nexus, SVNIT Surat",
+    duration: "Aug 2023 - Present",
+    technologies: ["DSA", "Web Development", "System Design", "Python", "React"],
     achievements: [
-      "Developed an event-driven notification system handling 1M+ daily events.",
-      "Implemented a distributed locking mechanism to ensure data consistency across clusters.",
-      "Automated CI/CD pipelines, reducing deployment errors by 15%."
+      "Mentored 50+ students in mastering Data Structures, Algorithms, and Full Stack Engineering.",
+      "Developed an ML-driven Lead Scoring System with 95% accuracy for admissions.",
+      "Built a high-performance AI inference pipeline with sub-2s response times."
     ],
-    impact: "Improved system reliability and enabled seamless horizontal scaling during high-traffic periods."
+    impact: "Empowered the next generation of engineers with industry-ready skills and technical excellence."
   }
 ];

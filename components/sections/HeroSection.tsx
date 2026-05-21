@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { profile } from "@/data/profile/profile";
 import { ArrowRight, Download, Sparkles, ChevronDown } from "lucide-react";
 import { MagneticLink } from "@/components/ui/Magnetic";
+import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
+import { BackgroundBeams } from "@/components/animations/BackgroundBeams";
 
 export function HeroSection() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -17,93 +19,112 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Immersive Background Effects */}
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Master Background Effects */}
+      <BackgroundBeams />
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] bg-apple-blue/10 blur-[120px] rounded-full animate-pulse" />
-        <div className="absolute bottom-[20%] right-[10%] w-[35vw] h-[35vw] bg-purple-500/5 blur-[100px] rounded-full animate-float" />
+        <div className="absolute top-[10%] left-[10%] w-[50vw] h-[50vw] bg-apple-blue/20 blur-[150px] rounded-full mix-blend-screen opacity-50" />
+        <div className="absolute bottom-[10%] right-[10%] w-[45vw] h-[45vw] bg-purple-600/10 blur-[150px] rounded-full mix-blend-screen opacity-50" />
       </div>
 
       <div className="section-container relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
         >
-          {/* Keynote Tag */}
-          <div className="mb-8 inline-flex items-center gap-2 keynote-pill">
-            <Sparkles size={12} className="text-apple-blue" />
-            <span>{profile.name}</span>
+          {/* Tagline Reveal */}
+          <div className="mb-10 inline-flex items-center gap-3 keynote-pill px-6 py-2 border-apple-blue/30 bg-apple-blue/5">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+            >
+              <Sparkles size={14} className="text-apple-blue" />
+            </motion.div>
+            <span className="text-[11px] font-bold tracking-[0.2em]">{profile.identity}</span>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="hero-title keynote-heading mb-6 text-5xl md:text-7xl lg:text-8xl">
-            Building <span className="text-gradient">Intelligent Systems</span> <br />
-            & Scalable Experiences
-          </h1>
+          {/* Main Headline with Word-by-Word Generate Effect */}
+          <div className="hero-title keynote-heading mb-8 text-5xl md:text-8xl">
+            <TextGenerateEffect 
+              words="Building Intelligent Systems & Scalable Experiences" 
+              className="text-white"
+            />
+          </div>
 
-          {/* Dynamic Rotating Roles */}
-          <div className="h-12 md:h-16 overflow-hidden mb-8">
+          {/* Dynamic Rotating Roles with Slide-Fade */}
+          <div className="h-16 md:h-20 overflow-hidden mb-10">
             <AnimatePresence mode="wait">
-              <motion.p
+              <motion.div
                 key={profile.roles[roleIndex]}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="text-2xl md:text-3xl font-semibold text-muted-strong"
+                initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -30, filter: "blur(5px)" }}
+                transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-apple-blue via-purple-400 to-apple-blue bg-[length:200%_auto] animate-gradient-shift"
               >
                 {profile.roles[roleIndex]}
-              </motion.p>
+              </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Description */}
-          <p className="max-w-2xl mx-auto mb-12 text-lg md:text-xl text-muted leading-relaxed">
+          {/* Master Description */}
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="max-w-3xl mx-auto mb-14 text-xl md:text-2xl text-muted leading-relaxed font-medium"
+          >
             {profile.description}
-          </p>
+          </motion.p>
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-6">
+          {/* Premium CTA Orchesration */}
+          <div className="flex flex-wrap items-center justify-center gap-8">
             <MagneticLink
               href="#projects"
-              className="px-8 py-4 bg-white text-black font-bold rounded-full transition-transform hover:scale-105 flex items-center gap-2 shadow-xl shadow-white/5"
+              className="group relative px-10 py-5 bg-white text-black font-black text-sm uppercase tracking-widest rounded-full transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] flex items-center gap-3"
             >
-              View Projects <ArrowRight size={18} />
+              <span>Explore The Work</span>
+              <div className="relative overflow-hidden w-5 h-5">
+                <ArrowRight size={20} className="absolute inset-0 transition-transform group-hover:translate-x-full" />
+                <ArrowRight size={20} className="absolute inset-0 -translate-x-full transition-transform group-hover:translate-x-0" />
+              </div>
             </MagneticLink>
             
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-8">
               <MagneticLink
                 href="#resume"
-                className="px-6 py-4 border border-white/10 hover:bg-white/5 rounded-full transition-colors flex items-center gap-2"
+                className="group flex items-center gap-3 text-sm font-bold text-muted-strong hover:text-white transition-colors"
               >
-                Resume <Download size={18} />
+                <Download size={18} className="group-hover:translate-y-0.5 transition-transform" />
+                <span className="border-b border-transparent group-hover:border-white transition-all">Resume</span>
               </MagneticLink>
               
               <MagneticLink
                 href="#contact"
-                className="text-sm font-semibold hover:text-white transition-colors"
+                className="text-sm font-bold text-apple-blue hover:brightness-125 transition-all"
               >
-                Contact
+                Let&apos;s Build ↗
               </MagneticLink>
             </div>
           </div>
         </motion.div>
 
-        {/* Scroll Prompt */}
+        {/* Cinematic Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted"
+          transition={{ delay: 2.5, duration: 1.5 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-muted/40"
         >
-          <span className="text-[10px] uppercase tracking-widest font-bold">Scroll to explore</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          >
-            <ChevronDown size={20} />
-          </motion.div>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-muted/20 to-transparent relative">
+             <motion.div 
+               animate={{ y: [0, 48, 0] }}
+               transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+               className="absolute top-0 left-[-1px] w-[3px] h-[3px] bg-apple-blue rounded-full shadow-[0_0_10px_#0071e3]"
+             />
+          </div>
+          <span className="text-[9px] uppercase tracking-[0.4em] font-black">Scroll Narrative</span>
         </motion.div>
       </div>
     </section>

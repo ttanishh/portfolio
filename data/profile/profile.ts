@@ -24,25 +24,13 @@ export interface Profile {
 
 export const profile: Profile = {
   name: "Tanish Panchal",
-  roles: [
-    "AI + Systems Engineer",
-    "Backend Developer",
-    "Distributed Systems Builder"
-  ],
-  headline: "Building Intelligent Systems & Scalable Experiences",
-  identity: "AI + Systems Engineer | Backend | Distributed Builder",
-  description: "I design and build AI-driven systems, scalable architectures, distributed applications, and modern software solutions.",
-  shortDescription: "I enjoy engineering because it turns ambiguity into systems: something measurable, usable, and sturdy enough for real people to depend on.",
-  heroDescription: "I design and build AI-driven systems, scalable architectures, distributed applications, and modern software solutions.",
-  areas: [
-    "AI / GenAI",
-    "Distributed Systems",
-    "Backend Engineering",
-    "Event-driven Architectures",
-    "Cloud Systems",
-    "Web3",
-    "Security"
-  ],
+  roles: ["AI Systems Engineer", "Backend Developer", "Distributed Systems Builder", "Data Analyst"],
+  headline: "Delivering Engineering Brilliance — Smart, Secure, and Always Ready to Grow.",
+  identity: "U22CS069, B.Tech in Computer Science and Engineering, SVNIT'26",
+  description: "Delivering Engineering Brilliance—Smart, Secure, and Always Ready to Grow.",
+  shortDescription: "I enjoy building systems that solve meaningful problems at scale. Clean architecture and practical impact matter more than unnecessary complexity.",
+  heroDescription: "Developing with Vision; Fostering TechnoCommercial.",
+  areas: ["AI / GenAI", "Distributed Systems", "Backend Engineering", "Event-driven Architectures", "Cloud Systems", "Web3", "Security"],
   links: {
     github: "https://github.com/ttanishh",
     linkedin: "https://linkedin.com/in/tanish2311",
@@ -50,9 +38,9 @@ export const profile: Profile = {
     resume: "#"
   },
   education: {
-    program: "B.Tech in Computer Science",
-    school: "SVNIT Surat",
-    detail: "Focus on Intelligent Systems and Distributed Backend Architectures. Grade: 9.2 CGPA (Expected)."
+    program: "B.Tech in Computer Science and Engineering",
+    school: "SVNIT'26",
+    detail: "U22CS069. Grade: 9.2 CGPA (Expected)."
   },
   certifications: [
     "AWS Certified Solutions Architect",
@@ -60,10 +48,5 @@ export const profile: Profile = {
     "Distributed Systems by MIT (OpenCourseWare)",
     "Solidity & Web3 Security Certificate"
   ],
-  achievements: [
-    "Reduced average system response time by 25% in internship role.",
-    "Built and deployed a Kafka-driven event system handling 1M+ events/day.",
-    "Led a team of 4 to win a regional system design hackathon.",
-    "Authored research notes on RAG pipeline optimization."
-  ]
+  achievements: ["7+ Projects Completed", "2+ Years of Engineering Focus", "50+ Students Mentored"]
 };

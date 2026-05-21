@@ -9,6 +9,7 @@ interface RevealProps {
   delay?: number;
   direction?: "up" | "down" | "left" | "right";
   width?: "fit-content" | "100%";
+  centered?: boolean;
 }
 
 export const Reveal = ({ 
@@ -16,38 +17,39 @@ export const Reveal = ({
   className = "", 
   delay = 0.2, 
   direction = "up",
-  width = "fit-content" 
+  width = "100%",
+  centered = false
 }: RevealProps) => {
   const directions = {
-    up: { y: 30, x: 0 },
-    down: { y: -30, x: 0 },
-    left: { x: 30, y: 0 },
-    right: { x: -30, y: 0 },
+    up: { y: 60, x: 0 },
+    down: { y: -60, x: 0 },
+    left: { x: 60, y: 0 },
+    right: { x: -60, y: 0 },
   };
 
   return (
-    <motion.div
-      initial={{ 
-        opacity: 0, 
-        ...directions[direction],
-        filter: "blur(8px)" 
-      }}
-      whileInView={{ 
-        opacity: 1, 
-        y: 0, 
-        x: 0,
-        filter: "blur(0px)"
-      }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ 
-        duration: 0.8, 
-        delay, 
-        ease: [0.19, 1, 0.22, 1] 
-      }}
-      className={className}
-      style={{ width }}
-    >
-      {children}
-    </motion.div>
+    <div className={`${className} ${centered ? "flex flex-col items-center text-center" : ""}`} style={{ width }}>
+      <motion.div
+        initial={{ 
+          opacity: 0, 
+          ...directions[direction],
+          filter: "blur(15px)" 
+        }}
+        whileInView={{ 
+          opacity: 1, 
+          y: 0, 
+          x: 0,
+          filter: "blur(0px)"
+        }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ 
+          duration: 1.2, 
+          delay, 
+          ease: [0.16, 1, 0.3, 1] 
+        }}
+      >
+        {children}
+      </motion.div>
+    </div>
   );
 };
