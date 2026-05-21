@@ -9,28 +9,25 @@ import { ResumeSection } from "@/components/sections/ResumeSection";
 import { LabSection } from "@/components/sections/LabSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/layout/Footer";
-import { SmoothScroll } from "@/components/animations/SmoothScroll";
 
 export default function Home() {
   return (
-    <SmoothScroll>
-      <main className="relative bg-black">
-        <Navbar />
-        
-        <div className="relative z-10">
-          <HeroSection />
-          <AboutJourney />
-          <ExperienceTimeline />
-          <FeaturedProjects />
-          <SkillsSection />
-          <PhilosophySection />
-          <ResumeSection />
-          <LabSection />
-          <ContactSection />
-        </div>
+    <main className="relative bg-black">
+      <Navbar />
+      
+      <div className="relative z-10">
+        <HeroSection />
+        <AboutJourney />
+        <ExperienceTimeline />
+        <FeaturedProjects />
+        <SkillsSection />
+        <PhilosophySection />
+        <ResumeSection />
+        <LabSection />
+        <ContactSection />
+      </div>
 
-        <Footer />
-      </main>
-    </SmoothScroll>
+      <Footer />
+    </main>
   );
 }
