@@ -3,7 +3,7 @@
 import { experiences } from "@/data/timeline/journey";
 import { Reveal } from "@/components/animations/Reveal";
 import { SectionIntro } from "@/components/sections/SectionIntro";
-import { Briefcase, Calendar, Award, Globe, Shield, Activity } from "lucide-react";
+import { Briefcase, Calendar, Award, Globe, Shield, Activity, Cpu } from "lucide-react";
 import { TracingBeam } from "@/components/ui/TracingBeam";
 
 export function ExperienceTimeline() {
