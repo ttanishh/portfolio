@@ -2,197 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --radius: 0.75rem;
-  }
+:root {
+  color-scheme: dark;
+  --bg: #000000;
+  --bg-soft: #0a0a0a;
+  --fg: #ffffff;
+  --muted: #86868b;
+  --muted-strong: #a1a1a6;
+  --accent: #0071e3;
+  --accent-soft: rgba(0, 113, 227, 0.1);
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.2);
+  
+  /* Keynote Animation Tokens */
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-presentation: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 @layer base {
   * {
-    @apply border-border selection:bg-electric/30 selection:text-white;
+    @apply border-border;
   }
   
   html {
-    scroll-behavior: auto !important;
-  }
-  
-  /* Enable smooth scrolling only after page is loaded */
-  html.loaded {
-    scroll-behavior: smooth !important;
+    @apply scroll-smooth;
+    background: var(--bg);
   }
 
   body {
-    @apply bg-dark text-foreground antialiased;
-    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
-    --electric: #1EAEDB;
-    --violet: #7E69AB;
-    --mint: #A0E7E5;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    background-color: #0D0208;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-dark-accent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-violet rounded-full transition-all;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-electric;
+    @apply bg-black text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
+    letter-spacing: -0.01em;
+    overflow-x: hidden;
   }
 }
 
-@layer utilities {
+@layer components {
+  .keynote-heading {
+    @apply text-balance font-bold tracking-tight leading-[1.1];
+  }
+  
   .glass {
-    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_4px_12px_rgba(0,0,0,0.5)];
+    @apply bg-white/5 backdrop-blur-2xl border border-white/10;
   }
   
-  .neo-blur {
-    @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-16;
   }
   
-  .text-gradient {
-    @apply bg-gradient-to-r from-electric via-violet to-mint bg-clip-text text-transparent;
+  .keynote-pill {
+    @apply rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase border border-white/10 bg-white/5 backdrop-blur-md;
   }
 
-  .glass-card {
-    @apply glass rounded-2xl transition-all duration-300 hover:shadow-[0_8px_20px_rgba(30,174,219,0.3)];
-  }
-
-  .animate-on-scroll {
+  /* Presentation Slide Entrance */
+  .slide-enter {
     opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.6s ease-out;
+    transform: translateY(30px) scale(0.98);
+    filter: blur(10px);
   }
-
-  .animate-on-scroll.is-visible {
+  
+  .slide-active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    transition: all 1.2s var(--ease-expo);
   }
+}
 
-  /* Custom cursor styles */
-  .cursor-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #1EAEDB;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-  }
+/* Background Effects */
+.keynote-gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(0, 113, 227, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(94, 59, 238, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 1) 0%, #000 100%);
+}
 
-  .cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(30, 174, 219, 0.5);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transition: transform 0.3s ease;
-  }
+.keynote-noise {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
 
-  /* Add animation for slide down effect */
-  @keyframes slide-down {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .animate-slide-down {
-    animation: slide-down 0.2s ease-out;
-  }
+/* Scroll Progress Line */
+.scroll-progress {
+  @apply fixed top-0 left-0 right-0 h-[2px] bg-accent z-[100] origin-left scale-x-0;
+}
 
-  /* Animation effects */
-  @keyframes float {
-    0%, 100% { 
-      transform: translateY(0);
-    }
-    50% { 
-      transform: translateY(-20px);
-    }
-  }
-  
-  .animate-float {
-    animation: float 8s ease-in-out infinite;
-  }
-  
-  @keyframes pulse-glow {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 0.1;
-    }
-    50% {
-      transform: scale(1.2);
-      opacity: 0.2;
-    }
-  }
-  
-  .animate-pulse-glow {
-    animation: pulse-glow 4s ease-in-out infinite;
-  }
+/* Typography Overrides */
+h1, h2, h3, h4, h5, h6 {
+  @apply tracking-tight;
+}
 
-  /* --- Experience Timeline Custom Styles --- */
-  .timeline-dot {
-    @apply absolute rounded-full border-4 border-white/20 bg-gradient-to-br from-electric via-violet to-mint shadow-lg z-20 transition-all duration-500;
-  }
-  .timeline-dot-hidden {
-    @apply scale-75 opacity-60;
-  }
-  .timeline-dot-visible {
-    @apply scale-100 opacity-100;
-  }
-  .timeline-card {
-    @apply glass-card mt-2 md:ml-12 shadow-xl hover:shadow-[0_12px_32px_rgba(30,174,219,0.25)] group transition-all duration-300;
-  }
-  .timeline-card:focus-within {
-    @apply ring-2 ring-electric/60;
-  }
-  .timeline-link {
-    @apply transition shadow hover:scale-105 focus:outline-none focus:ring-2;
-  }
-  .timeline-link-linkedin {
-    @apply focus:ring-electric/60;
-  }
-  .timeline-link-certificate {
-    @apply focus:ring-violet/60;
-  }
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/50;
+}
+
+/* Cinematic Image Overlay */
+.image-reveal-overlay {
+  @apply absolute inset-0 bg-black/60 transition-opacity duration-700 opacity-0 group-hover:opacity-100 flex items-center justify-center;
+}
+
+/* Apple Colors */
+.text-apple-blue {
+  color: #0071e3;
+}
+.bg-apple-blue {
+  background-color: #0071e3;
+}
+.border-apple-blue {
+  border-color: #0071e3;
+}
+
+/* Animations */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 8s ease infinite;
 }
